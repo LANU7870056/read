@@ -33,7 +33,7 @@
             font-family: Arial, sans-serif;
             max-width: 900px;
             margin: 0 auto;
-            padding: 42px;
+            padding: 42px 10px;
         }
         .question-nav {
             display: flex;
