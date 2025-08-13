@@ -29,6 +29,19 @@
   transform: translateX(-70%); /* 向左移動自身寬度的50% */
 }
 
+
+.option-box {
+    display: inline-block;
+    padding: 2px 5px;
+    margin: 0 2px;
+    border: 1px solid #ccc;
+    background-color: #ffffcc; /* 淺黃色 */
+    border-radius: 3px;
+    border-radius: 50%; 
+    font-weight: bold;
+}
+
+
         body {
             font-family: Arial, sans-serif;
             max-width: 900px;

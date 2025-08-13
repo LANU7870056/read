@@ -21,13 +21,16 @@ const questionContainer = document.getElementById('questionContainer');
 const scoreBtn = document.getElementById('scoreBtn');
 const resultDiv = document.getElementById('result');
 
+
+
+
 function formatQuestionText(text) {
     // 將 (A)、(B)、(C)、(D) 前面加上換行
     return text
-        .replace(/\(A\)/g, '<br>(A)')
-        .replace(/\(B\)/g, '<br>(B)')
-        .replace(/\(C\)/g, '<br>(C)')
-        .replace(/\(D\)/g, '<br>(D)');
+        .replace(/\(A\)/g, '<br><span class="option-box">(A)</span>')
+        .replace(/\(B\)/g, '<br><span class="option-box">(B)</span>')
+        .replace(/\(C\)/g, '<br><span class="option-box">(C)</span>')
+        .replace(/\(D\)/g, '<br><span class="option-box">(D)</span>');
 }
 
 function renderQuestionNav() {
