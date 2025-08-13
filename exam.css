@@ -23,8 +23,9 @@
 .center-item {
   font-size: 24px;
   color: yellow;
+  width: 300px;  
   position: absolute;     /* 絕對定位 */
-  left: 50%;             /* 從左邊50%開始 */
+  left: 280px;             /* 從左邊50%開始 */
   transform: translateX(-70%); /* 向左移動自身寬度的50% */
 }
 
