@@ -1,0 +1,112 @@
+﻿.top-bar2 {
+  position: absolute;      /* 固定在頁面上方 */
+  top: 0px;
+  left: 0;
+  width: 100%;             /* 滿版寬度 */
+  height: 40px;           /* 高度 40px */
+  background-color: #772B1A;
+  display: flex;           /* 使用 Flexbox 排列 */
+  align-items: center;     /* 垂直置中 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 陰影效果 */
+}
+
+.left-item {
+  font-size: 16px;
+  color: white;
+  margin-left: 10px;      /* 左邊留一些間距 */
+}
+
+.left-item a {
+  color: white;
+  text-decoration: none; /* 如果你不想要底線 */
+}
+.center-item {
+  font-size: 24px;
+  color: yellow;
+  position: absolute;     /* 絕對定位 */
+  left: 50%;             /* 從左邊50%開始 */
+  transform: translateX(-50%); /* 向左移動自身寬度的50% */
+}
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .question-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .question-nav button.number {  /*1-20*/
+            width: 35px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border: 0px solid #ccc;
+            background-color: #FF50A7;
+        }
+        .question-nav button.answered {
+            background-color: #ddd;
+        }
+        .question-nav button.current {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .options-container {
+            display: flex;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        .options-container button {  /*ABCD*/
+            width: 40px;
+            height: 30px;
+            font-size: 24px;
+            cursor: pointer;
+            background-color: #B0EB00;
+            border: 1px solid #ccc;
+        }
+        .options-container button.selected {
+            background-color: #ddd;
+        }
+        .question-container {   /*題目*/
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 150px;
+            font-size: 26px;
+            line-height: 1.6;
+        }
+        .question-container p {
+            margin: 0;
+        }
+        .score-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .score-btn:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        .option {
+            display: block;
+            margin-top: 10px;
+        }
