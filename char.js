@@ -31,7 +31,7 @@ function toggleAllChinese() {
     });
     
     // 更新全部切換按鈕的文字
-    toggleAllBtn.textContent = isHidden ? '全部隱藏中文' : '全部顯示中文';
+    toggleAllBtn.textContent = isHidden ? '隱藏中文' : '顯示中文';
 }
 
 // 詞性標記到類名的映射
