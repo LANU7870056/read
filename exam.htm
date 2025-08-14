@@ -21,7 +21,7 @@
         }
         
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
@@ -67,13 +67,13 @@
         /* 標籤樣式 */
         .tab-container {
             display: flex;
-	    font-size: 22px;
-            margin-bottom: 2px;
+	    font-size: 28px;
+            margin-bottom: 4px;
             border-bottom: 1px solid #ddd;
         }
         
         .tab {
-            padding: 1px 10px;
+            padding: 1px 15px;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s;
@@ -113,7 +113,7 @@
             background-color: #cce0ff;
         }
         
- .chi-tab {
+	.chi-tab {
             color: #0f4d8e;
             background-color: #96f2ff;
         }
@@ -159,7 +159,7 @@
         .basic-date {
             background-color: #ffcc00;
             color: #8e6c0a;
-height:25px;
+	    height:25px;
         }
         
         .advanced-date {
@@ -253,14 +253,15 @@ height:25px;
             }
             
             .tab {
-                padding: 8px 12px;
-                font-size: 14px;
+                padding: 2px 2px;
+                font-size: 25px;
+		height:40px;
             }
         }
         
         @media (max-width: 480px) {
             .news-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 2fr;
             }
             
             .logo {
@@ -306,9 +307,9 @@ height:25px;
         
         <!-- 標籤選項 -->
         <div class="tab-container">
-            <div class="tab basic-tab active" onclick="showTab('basic')">郵政法</div>
-            <div class="tab advanced-tab" onclick="showTab('advanced')">交通規則</div>
-            <div class="tab practical-tab" onclick="showTab('practical')">台灣地理</div>
+            <div class="tab basic-tab active" onclick="showTab('basic')">郵政</div>
+            <div class="tab advanced-tab" onclick="showTab('advanced')">交通</div>
+            <div class="tab practical-tab" onclick="showTab('practical')">地理</div>
             <div class="tab chi-tab" onclick="showTab('chi')">國文</div>
         </div>
         
@@ -364,7 +365,7 @@ height:25px;
                 <div class="news-item">
                     <div class="news-date advanced-date">交通規則篇</div>
                     <div class="news-content">
-                        <h3 class="news-title"><a href="tra01.htm">第1回<BR>（1-13）</a></h3>
+                        <h3 class="news-title"><a href="tra01.htm">第1回1~13</a></h3>
                     </div>
                 </div>
 
@@ -407,6 +408,23 @@ height:25px;
                     <div class="news-content">
                         <h3 class="news-title"><a href="tra06.htm">汽車34~44</a></h3>
                     </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra07.htm">汽車45~50</a></h3>
+                    </div>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra08.htm">汽車51~56</a></h3>
+                    </div>
+                </div>
+
+
                 </div>
 
 
