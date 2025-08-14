@@ -114,13 +114,13 @@
         }
         
  .chi-tab {
-            color: #0a4d8e;
+            color: #0f4d8e;
             background-color: #96f2ff;
         }
         
         .chi-tab.active {
-            border-bottom-color: #6699ff;
-            background-color: #cce0ff;
+            border-bottom-color: #6999ff;
+            background-color: #56F2FF;
         }
 
 
@@ -171,6 +171,12 @@ height:25px;
             background-color: #6699ff;
             color: #0a4d8e;
         }
+
+  .chi-date {
+            background-color: #56F2FF;
+            color: #0a4d8e;
+        }
+        
         
         .news-content {
             padding: 15px;
@@ -215,7 +221,7 @@ height:25px;
         .top-bar {
             position: fixed;
             top: 0px;
-            left: 0;
+            left: 0px;
             width: 100%;
             height: 70px;
             background-color: #772B1A;
@@ -306,7 +312,7 @@ height:25px;
             <div class="tab chi-tab" onclick="showTab('chi')">國文</div>
         </div>
         
-        <!-- 基礎篇內容 -->
+        <!-- 郵政篇 -->
         <div id="basic-content" class="tab-content active">
             <div class="news-container">
                 <!-- 新聞項目 1 -->
@@ -339,18 +345,26 @@ height:25px;
                     </div>
                 </div>       
 
+       <!-- 新聞項目5 -->
+                <div class="news-item">
+                    <div class="news-date basic-date">郵政法</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="mal05.htm">第5回</a></h3>
+                    </div>
+                </div>       
+
 
             </div>
         </div>
         
-        <!-- 進階篇內容 -->
+        <!-- 交通 -->
         <div id="advanced-content" class="tab-content">
             <div class="news-container">
                 <!-- 新聞項目 1 -->
                 <div class="news-item">
-                    <div class="news-date advanced-date">模擬考</div>
+                    <div class="news-date advanced-date">交通規則篇</div>
                     <div class="news-content">
-                        <h3 class="news-title"><a href="mal01.htm">施工中…</a></h3>
+                        <h3 class="news-title"><a href="tra01.htm">第1回<BR>（1-13）</a></h3>
                     </div>
                 </div>
             </div>
@@ -361,7 +375,7 @@ height:25px;
             <div class="news-container">
                 <!-- 新聞項目 1 -->
                 <div class="news-item">
-                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-date practical-date">台灣地理篇</div>
                     <div class="news-content">
                         <h3 class="news-title"><a href="pra01.htm">施工中…</a></h3>
                     </div>
@@ -376,7 +390,7 @@ height:25px;
             <div class="news-container">
                 <!-- 新聞項目 1 -->
                 <div class="news-item">
-                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-date chi-date">國文篇</div>
                     <div class="news-content">
                         <h3 class="news-title"><a href="pra01.htm">X施工中…</a></h3>
                     </div>
