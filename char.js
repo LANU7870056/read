@@ -1,4 +1,40 @@
-﻿// 詞性標記到類名的映射
+﻿// 為全部切換按鈕添加事件監聽器
+document.addEventListener('DOMContentLoaded', function() {
+    createWordCards(); // 創建單字卡片
+    
+    // 獲取全部切換按鈕並添加點擊事件
+    const toggleAllBtn = document.getElementById('toggleAllBtn');
+    if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', toggleAllChinese);
+    }
+});
+
+
+
+function toggleAllChinese() {
+    const chineseDivs = document.querySelectorAll('.chinese');
+    const toggleAllBtn = document.getElementById('toggleAllBtn');
+    
+    // 檢查當前是否全部隱藏（取第一個元素的狀態作為參考）
+    const isHidden = chineseDivs.length > 0 && 
+                    (chineseDivs[0].style.display === 'none' || 
+                     window.getComputedStyle(chineseDivs[0]).display === 'none');
+    
+    // 切換所有中文解釋的顯示狀態
+    chineseDivs.forEach(div => {
+        div.style.display = isHidden ? 'block' : 'none';
+    });
+    
+    // 更新所有單個切換按鈕的狀態（可選）
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.innerHTML = isHidden ? '👁️' : '👁️';
+    });
+    
+    // 更新全部切換按鈕的文字
+    toggleAllBtn.textContent = isHidden ? '全部隱藏中文' : '全部顯示中文';
+}
+
+// 詞性標記到類名的映射
 const posClassMap = {
     '名': 'pos-noun',
     '形': 'pos-adj',
@@ -36,7 +72,7 @@ function createWordCards() {
     // 獲取卡片容器
     const cardContainer = document.getElementById('cardContainer');
     
-    vocabulary.forEach(word => {
+    vocabulary.forEach((word, index) => {  // 添加 index 參數來獲取當前索引
         // 創建卡片元素
         const card = document.createElement('div');
         card.className = 'word-card';
@@ -45,10 +81,10 @@ function createWordCards() {
         const textSection = document.createElement('div');
         textSection.className = 'text-section';
         
-        // 添加英文
+        // 添加英文和編號
         const englishDiv = document.createElement('div');
         englishDiv.className = 'english';
-        englishDiv.textContent = word.en;
+        englishDiv.innerHTML = `<span class="word-number">${index + 1}.</span> ${word.en}`;
         
         // 創建中文容器
         const chineseContainer = document.createElement('div');

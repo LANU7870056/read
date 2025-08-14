@@ -127,8 +127,8 @@
 	    // 連詞 [連]
             text = text.replace(/\[連\]/g, '<span class="pos-conj">連</span>');
   	    // V [V]
-            text = text.replace(/\[vi\]/g, '<span class="pos-v">Vi</span>');
-            text = text.replace(/\[vt\]/g, '<span class="pos-v">Vi</span>');
+            text = text.replace(/\[vi\]/g, '<span class="pos-v">vi</span>');
+            text = text.replace(/\[vt\]/g, '<span class="pos-v">vt</span>');
              
          
             return text;

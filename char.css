@@ -5,6 +5,23 @@ body {
     padding: 20px;
 }
 
+
+#toggleAllBtn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+#toggleAllBtn:hover {
+    background-color: #2a6fc9;
+}
+
 /* 單字卡片容器 */
 .card-container {
     display: flex;
