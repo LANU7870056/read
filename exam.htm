@@ -367,8 +367,56 @@ height:25px;
                         <h3 class="news-title"><a href="tra01.htm">第1回<BR>（1-13）</a></h3>
                     </div>
                 </div>
+
+		<!-- 新聞項目 2 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra02.htm">第1章總則</a></h3>
+                    </div>
+                </div>
+
+
+<!-- 新聞項目 3 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra03.htm">汽車1~18</a></h3>
+                    </div>
+                </div>
+
+<!-- 新聞項目 4 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra04.htm">汽車19~28</a></h3>
+                    </div>
+                </div>
+
+<!-- 新聞項目 5 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra05.htm">汽車29~33</a></h3>
+                    </div>
+                </div>
+
+<!-- 新聞項目 5 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">交通規則篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="tra06.htm">汽車34~44</a></h3>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
+
+
+
+
         
         <!-- 實用篇內容 -->
         <div id="practical-content" class="tab-content">
@@ -431,6 +479,26 @@ height:25px;
             // 為選中的標籤添加active類
             event.currentTarget.classList.add('active');
         }
+
+
+
+
+const tabMap = {
+  '#q': '.basic-tab',
+  '#w': '.advanced-tab',
+  '#e': '.practical-tab',
+  '#r': '.chi-tab',
+};
+
+const target = tabMap[window.location.hash];
+if (target) {
+  document.querySelector(target)?.click();
+}
+
+
+
+
+
     </script>
 </body>
 </html>

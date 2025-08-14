@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵政考試測驗系統</title>  
+<script src="tra03.js"></script>
+<link rel="stylesheet" href="exam2.css">
+
+</head>
+<body>
+    <div class="top-bar2">
+        <div class="left-item"><a href="exam.htm#w">回首頁</a></div>
+        <div class="center-item">汽1~18</div>
+    </div>  
+    
+    <div class="question-nav" id="questionNav"></div>    
+<div class="row-container">
+  <div class="options-container" id="optionsContainer"></div>
+  <button class="record-btn" id="recordBtn">作答記錄</button>
+</div>
+
+
+    <div class="question-container" id="questionContainer"></div>
+    
+    <button class="score-btn" id="scoreBtn">評分</button>
+
+    <div class="result" id="result"></div>
+    
+    <!-- 模態視窗 -->
+    <div id="recordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>作答記錄</h2>
+            <table class="answer-record" id="answerRecordTable">
+                <thead>
+                    <tr>
+                        <th>題號</th>
+                        <th>使用者答案</th>
+
+                    </tr>
+                </thead>
+                <tbody id="answerRecordBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+ 
+</body>
+</html>
+
+<script src="exam2.js"></script>
