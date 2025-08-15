@@ -289,7 +289,7 @@
         <!-- 標籤選項 -->
         <div class="tab-container">
             <div class="tab basic-tab active" onclick="showTab('basic')">基礎篇</div>
-            <div class="tab advanced-tab" onclick="showTab('advanced')">進階篇</div>
+            <div class="tab advanced-tab" onclick="showTab('advanced')">單字文法篇</div>
             <div class="tab practical-tab" onclick="showTab('practical')">實用篇</div>
         </div>
         
@@ -353,29 +353,50 @@
         <!-- 進階篇內容 -->
         <div id="advanced-content" class="tab-content">
             <div class="news-container">
-                <!-- 新聞項目 1 -->
+               <!-- 新聞項目 1 -->
                 <div class="news-item">
-                    <div class="news-date advanced-date">進階篇</div>
+                    <div class="news-date practical-date">單字文法篇</div>
                     <div class="news-content">
-                        <h3 class="news-title"><a href="adv01.htm">施工中…</a></h3>
+                        <h3 class="news-title"><a href="va01.htm">單字1A</a></h3>
                     </div>
                 </div>
-                
-               
+
+<!-- 新聞項目2 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">單字文法篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="va02.htm">文法1B</a></h3>
+                    </div>
+                </div>          
+<!-- 新聞項目3 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">單字文法篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="va03.htm">文法2A</a></h3>
+                    </div>
+                </div>    
+<!-- 新聞項目4 -->
+                <div class="news-item">
+                    <div class="news-date advanced-date">單字文法篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="va04.htm">文法2B</a></h3>
+                    </div>
+                </div>                   
             </div>
         </div>
         
         <!-- 實用篇內容 -->
         <div id="practical-content" class="tab-content">
             <div class="news-container">
-                <!-- 新聞項目 1 -->
+<!-- 新聞項目 1 -->
                 <div class="news-item">
-                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-date practical-date">單字文法篇</div>
                     <div class="news-content">
-                        <h3 class="news-title"><a href="pra01.htm">施工中…</a></h3>
+                        <h3 class="news-title"><a href="X.htm">施工。。</a></h3>
                     </div>
                 </div>
-                
+
+            
               
             </div>
         </div>
@@ -409,6 +430,22 @@
             // 為選中的標籤添加active類
             event.currentTarget.classList.add('active');
         }
+
+
+const tabMap = {
+  '#q': '.basic-tab',
+  '#w': '.advanced-tab',
+  '#e': '.practical-tab',
+};
+
+
+
+
+const target = tabMap[window.location.hash];
+if (target) {
+  document.querySelector(target)?.click();
+}
+
     </script>
 </body>
 </html>
