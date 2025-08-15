@@ -1,4 +1,3 @@
-
 // 隨機選取20題
 const selectedQuestions = [];
 const totalQuestions = exam.length;
@@ -20,12 +19,12 @@ const optionsContainer = document.getElementById('optionsContainer');
 const questionContainer = document.getElementById('questionContainer');
 const scoreBtn = document.getElementById('scoreBtn');
 const resultDiv = document.getElementById('result');
-
-
-
+const wrongAnswersBtn = document.getElementById('wrongAnswersBtn');
+const wrongAnswersModal = document.getElementById('wrongAnswersModal');
+const wrongAnswersList = document.getElementById('wrongAnswersList');
+const closeModal = document.querySelector('.close');
 
 function formatQuestionText(text) {
-    // 將 (A)、(B)、(C)、(D) 前面加上換行
     return text
         .replace(/\(A\)/g, '<br><span class="option-box">(A)</span>')
         .replace(/\(B\)/g, '<br><span class="option-box">(B)</span>')
@@ -66,18 +65,16 @@ function renderOptions() {
             selectedQuestions[currentQuestionIndex].userAnswer = option;
             renderQuestionNav();
             btn.classList.add('selected');
-            // 移除其他按鈕的selected類
             Array.from(optionsContainer.children).forEach(child => {
                 if (child !== btn) child.classList.remove('selected');
             });
             
-            // 自動跳轉到下一題
             if (currentQuestionIndex < selectedQuestions.length - 1) {
                 setTimeout(() => {
                     currentQuestionIndex++;
                     renderQuestion();
                     renderQuestionNav();
-                }, 300); // 延遲300毫秒讓使用者看到選擇效果
+                }, 300);
             }
         });
         
@@ -124,16 +121,38 @@ function calculateScore() {
         <p>答對題數: ${correctCount}題 / ${selectedQuestions.length}題</p>
     `;
     
+    // 顯示答錯題目按鈕
+    if (correctCount < selectedQuestions.length) {
+        wrongAnswersBtn.style.display = 'inline-block';
+    } else {
+        wrongAnswersBtn.style.display = 'none';
+    }
+}
+
+function showWrongAnswers() {
+    wrongAnswersList.innerHTML = '';
+    let wrongCount = 0;
+    
     selectedQuestions.forEach(question => {
-        const isCorrect = question.userAnswer === question.ans;
-        resultDiv.innerHTML += `
-            <p>第${question.questionNumber}題: 
-                您的答案: ${question.userAnswer || '未作答'} 
-                | 正確答案: ${question.ans} 
-                <span class="${isCorrect ? 'correct' : 'incorrect'}">(${isCorrect ? '正確' : '錯誤'})</span>
-            </p>
-        `;
+        if (question.userAnswer !== question.ans) {
+            wrongCount++;
+            const formattedText = formatQuestionText(question.item);
+            const wrongAnswerItem = document.createElement('div');
+            wrongAnswerItem.className = 'wrong-answer-item';
+            wrongAnswerItem.innerHTML = `
+                <div class="wrong-answer-title">第${question.questionNumber}題</div>
+                <p>${formattedText}</p>
+                <p>正確答案: <span class="correct">${question.ans}</span></p>
+            `;
+            wrongAnswersList.appendChild(wrongAnswerItem);
+        }
     });
+    
+    if (wrongCount === 0) {
+        wrongAnswersList.innerHTML = '<p>恭喜您！沒有答錯的題目。</p>';
+    }
+    
+    wrongAnswersModal.style.display = 'block';
 }
 
 // 初始化
@@ -141,4 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderQuestionNav();
     renderQuestion();
     scoreBtn.addEventListener('click', calculateScore);
+    wrongAnswersBtn.addEventListener('click', showWrongAnswers);
+    closeModal.addEventListener('click', () => {
+        wrongAnswersModal.style.display = 'none';
+    });
+    window.addEventListener('click', (event) => {
+        if (event.target === wrongAnswersModal) {
+            wrongAnswersModal.style.display = 'none';
+        }
+    });
 });

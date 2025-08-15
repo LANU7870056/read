@@ -3,51 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郵政考試測驗系統</title>  
-<script src="tra06.js"></script>
-<link rel="stylesheet" href="exam2.css">
-
+    <title>郵政考試測驗系統</title>
+    <script src="tra06.js"></script>
+    <link rel="stylesheet" href="exam2.css">
 </head>
 <body>
     <div class="top-bar2">
         <div class="left-item"><a href="exam.htm#w">回首頁</a></div>
-        <div class="center-item">汽34~44</div>
+        <div class="center-item">汽車34~44</div>
     </div>  
     
     <div class="question-nav" id="questionNav"></div>    
-<div class="row-container">
-  <div class="options-container" id="optionsContainer"></div>
-  <button class="record-btn" id="recordBtn">作答記錄</button>
-</div>
-
+    <div class="options-container" id="optionsContainer"></div>
 
     <div class="question-container" id="questionContainer"></div>
     
     <button class="score-btn" id="scoreBtn">評分</button>
-
-    <div class="result" id="result"></div>
-    
-    <!-- 模態視窗 -->
-    <div id="recordModal" class="modal">
+<button class="wrong-answers-btn" id="wrongAnswersBtn" style="display:none;">答錯題目</button>
+    <div class="result" id="result"></div>    
+<!-- 彈出視窗 -->
+    <div id="wrongAnswersModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>作答記錄</h2>
-            <table class="answer-record" id="answerRecordTable">
-                <thead>
-                    <tr>
-                        <th>題號</th>
-                        <th>使用者答案</th>
-
-                    </tr>
-                </thead>
-                <tbody id="answerRecordBody">
-                </tbody>
-            </table>
+            <h2>答錯題目複習</h2>
+            <div id="wrongAnswersList"></div>
         </div>
     </div>
-    
- 
+    <script src="exam.js"></script>
+
 </body>
 </html>
-
-<script src="exam2.js"></script>
