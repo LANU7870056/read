@@ -26,9 +26,24 @@
         <!-- 段落將通過JavaScript動態生成 -->
     </div>
 
-    <div id="pronunciation-area">
+  <div id="pronunciation-area">
         <div id="buttons-container">
-        
+            <div class="btn-group">
+                <button id="pronounce-word" class="control-btn">🔊</button>
+                <span class="btn-text">發音</span>
+            </div>
+            <div class="btn-group">
+                <button id="pronounce-paragraph" class="control-btn">📖</button>
+                <span class="btn-text">朗讀</span>
+            </div>
+            <div class="btn-group" style="display: none;">
+                <button id="show-translation" class="control-btn">🔄</button>
+                <span class="btn-text">翻譯</span>
+            </div>
+            <div class="btn-group">
+                <button id="stop-pronunciation" class="control-btn">⏹</button>
+                <span class="btn-text">停止</span>
+            </div>
         </div>
     </div>
    
