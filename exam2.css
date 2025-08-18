@@ -1,19 +1,35 @@
-﻿body {
+﻿.zhuyin {
+  font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+}
+.zhuyin {
+  font-size: 1.5em;
+  line-height: 2;
+}
+body {
             font-family: Arial, sans-serif;
             max-width: 900px;
             margin: 0 auto;
             padding: 80px 10px;
+font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+  font-weight: bold;
+
         }
 
 .modal-content {
     background-color: #fefefe;
     margin: 10% auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #888;
     width: 80%;
     max-width: 800px;
     max-height: 80vh;
     overflow-y: auto;
+   font-weight: bold;
+  font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+  font-size: 1.5em;
+  line-height: 2;
+
+
 }
 
 .row-container {
@@ -163,10 +179,10 @@
         
 .modal-content {
             background-color: #fefefe;
-            margin: 5% auto;
+            margin: 1% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 300px;
+            width: 100%;
             max-width: 800px;
             max-height: 80vh;
             overflow-y: auto;
@@ -250,4 +266,12 @@
 }
 
 
-
+.explanation {
+    color: #00F;
+    //font-style: italic;
+    margin-top: 10px;
+    padding: 5px;
+font-style:  normal;
+    background-color: #f5f5f5;
+    border-left: 3px solid #772B1A;
+}

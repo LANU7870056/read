@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵政考試測驗系統</title>
+    <script src="chi-01.js"></script>
+    <link rel="stylesheet" href="exam2.css">
+</head>
+<body>
+    <div class="top-bar2">
+        <div class="left-item"><a href="exam.htm#r"><img src="home.png"></a></div>
+        <div class="center-item">95營運</div>
+    </div>  
+    
+    <div class="question-nav" id="questionNav"></div>    
+    <div class="options-container" id="optionsContainer"></div>
+
+    <div class="question-container" id="questionContainer"></div>
+    
+    <button class="score-btn" id="scoreBtn">評分</button>
+<button class="wrong-answers-btn" id="wrongAnswersBtn" style="display:none;">答錯題目</button>
+    <div class="result" id="result"></div>    
+<!-- 彈出視窗 -->
+    <div id="wrongAnswersModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>答錯題目複習</h2>
+            <div id="wrongAnswersList"></div>
+        </div>
+    </div>
+    <script src="exam9.js"></script>
+
+</body>
+</html>
