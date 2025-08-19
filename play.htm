@@ -1,0 +1,563 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英文單字學習遊戲</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-size: 2.8rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            background: rgba(44, 62, 80, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .english-word {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 15px 0;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
+            padding: 0 15px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .game-area {
+            position: relative;
+            height: 400px;
+            border: 3px dashed rgba(44, 62, 80, 0.3);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: rgba(236, 240, 241, 0.5);
+            display: flex;
+        }
+        
+        .game-column {
+            flex: 1;
+            position: relative;
+            height: 100%;
+        }
+        
+        .chinese-option {
+            position: absolute;
+            padding: 12px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 80%;
+            left: 10%;
+            user-select: none;
+            z-index: 10;
+        }
+        
+        .chinese-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chinese-option.correct-clicked {
+            background: #2ecc71;
+            transform: scale(1.1);
+        }
+        
+        .chinese-option.wrong {
+            background: #e74c3c;
+            animation: shake 0.5s;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .progress-container {
+            height: 10px;
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #2ecc71, #3498db);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 90%;
+            width: 500px;
+        }
+        
+        .feedback.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .feedback h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .feedback p {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .feedback-stats {
+            background: rgba(44, 62, 80, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+        
+        .restart-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-over {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid #e74c3c;
+        }
+        
+        .game-complete {
+            background: rgba(46, 204, 113, 0.1);
+            border: 2px solid #2ecc71;
+        }
+        
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .english-word {
+                font-size: 2rem;
+            }
+            
+            .chinese-option {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+            
+            .game-area {
+                height: 350px;
+            }
+            
+            .feedback {
+                padding: 25px;
+            }
+            
+            .feedback h2 {
+                font-size: 2rem;
+            }
+            
+            .feedback p {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>英文單字學習遊戲</h1>
+        
+        <div class="stats">
+            <div class="score">分數: <span id="score">0</span></div>
+            <div class="high-score">最高分: <span id="high-score">0</span></div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="english-word" id="english-word">Loading...</div>
+        
+        <div class="game-area" id="game-area">
+            <div class="game-column" id="column1"></div>
+            <div class="game-column" id="column2"></div>
+            <div class="game-column" id="column3"></div>
+            <div class="game-column" id="column4"></div>
+        </div>
+        
+        <div class="feedback" id="feedback">
+            <h2 id="feedback-title">遊戲結束</h2>
+            <div class="feedback-stats">
+                <p>本次得分: <span id="final-score">0</span></p>
+                <p>最高紀錄: <span id="final-high-score">0</span></p>
+            </div>
+            <p id="feedback-message"></p>
+            <button class="restart-btn" id="restart-btn">再玩一次</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 單字資料庫
+            const words = [
+                { eng: "apple", ch: "蘋果" },
+                { eng: "banana", ch: "香蕉" },
+                { eng: "computer", ch: "電腦" },
+                { eng: "water", ch: "水" },
+                { eng: "book", ch: "書" },
+                { eng: "friend", ch: "朋友" },
+                { eng: "school", ch: "學校" },
+                { eng: "music", ch: "音樂" },
+                { eng: "sun", ch: "太陽" },
+                { eng: "moon", ch: "月亮" },
+                { eng: "star", ch: "星星" },
+                { eng: "tree", ch: "樹" },
+                { eng: "flower", ch: "花" },
+                { eng: "house", ch: "房子" },
+                { eng: "car", ch: "汽車" },
+                { eng: "time", ch: "時間" },
+                { eng: "love", ch: "愛" },
+                { eng: "family", ch: "家庭" },
+                { eng: "food", ch: "食物" },
+                { eng: "city", ch: "城市" }
+            ];
+            
+            // 遊戲元素
+            const englishWordElement = document.getElementById('english-word');
+            const columns = [
+                document.getElementById('column1'),
+                document.getElementById('column2'),
+                document.getElementById('column3'),
+                document.getElementById('column4')
+            ];
+            const scoreElement = document.getElementById('score');
+            const highScoreElement = document.getElementById('high-score');
+            const progressBar = document.getElementById('progress-bar');
+            const feedbackElement = document.getElementById('feedback');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackMessage = document.getElementById('feedback-message');
+            const finalScoreElement = document.getElementById('final-score');
+            const finalHighScoreElement = document.getElementById('final-high-score');
+            const restartBtn = document.getElementById('restart-btn');
+            
+            // 遊戲狀態
+            let currentIndex = 0;
+            let score = 0;
+            let highScore = localStorage.getItem('highScore') || 0;
+            let gameActive = true;
+            let currentOptions = [];
+            let animationFrameIds = [];
+            let shuffledWords = [];
+            let gameCompleted = false;
+            let correctOptionClicked = false;
+            
+            // 初始化遊戲
+            function initGame() {
+                // 取消所有動畫
+                animationFrameIds.forEach(id => cancelAnimationFrame(id));
+                animationFrameIds = [];
+                
+                // 清空所有列
+                clearAllOptions();
+                
+                // 打亂單字順序
+                shuffledWords = [...words].sort(() => Math.random() - 0.5);
+                
+                score = 0;
+                currentIndex = 0;
+                gameActive = true;
+                gameCompleted = false;
+                correctOptionClicked = false;
+                scoreElement.textContent = score;
+                highScoreElement.textContent = highScore;
+                feedbackElement.classList.remove('show');
+                feedbackElement.classList.remove('game-over');
+                feedbackElement.classList.remove('game-complete');
+                nextWord();
+            }
+            
+            // 清除所有選項
+            function clearAllOptions() {
+                columns.forEach(column => {
+                    column.innerHTML = '';
+                });
+                currentOptions = [];
+            }
+            
+            // 顯示下一個單字
+            function nextWord() {
+                if (!gameActive) return;
+                
+                // 重置狀態
+                correctOptionClicked = false;
+                
+                // 清除所有選項
+                clearAllOptions();
+                
+                // 檢查是否完成遊戲
+                if (currentIndex >= shuffledWords.length) {
+                    gameCompleted = true;
+                    endGame(true);
+                    return;
+                }
+                
+                // 更新進度條
+                const progress = (currentIndex / shuffledWords.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                // 顯示英文單字
+                const currentWord = shuffledWords[currentIndex];
+                englishWordElement.textContent = currentWord.eng;
+                
+                // 準備選項（1正確+3錯誤）
+                const options = [currentWord.ch];
+                const wrongOptions = getRandomOptions(currentIndex, 3);
+                options.push(...wrongOptions);
+                
+                // 打亂選項順序
+                const shuffledOptions = [...options].sort(() => Math.random() - 0.5);
+                
+                // 將選項分配到各列
+                shuffledOptions.forEach((option, index) => {
+                    const isCorrect = option === currentWord.ch;
+                    const optionElement = createOption(option, isCorrect);
+                    columns[index].appendChild(optionElement);
+                    currentOptions.push(optionElement);
+                    
+                    // 開始掉落動畫
+                    startFalling(optionElement, columns[index]);
+                });
+            }
+            
+            // 建立選項元素
+            function createOption(text, isCorrect) {
+                const option = document.createElement('div');
+                option.className = 'chinese-option';
+                option.textContent = text;
+                option.dataset.correct = isCorrect;
+                
+                // 點擊事件處理
+                option.addEventListener('click', () => {
+                    if (!gameActive) return;
+                    
+                    const isCorrect = option.dataset.correct === 'true';
+                    
+                    if (isCorrect) {
+                        // 標記已點擊正確答案
+                        correctOptionClicked = true;
+                        
+                        // 正確答案 - 所有選項變綠色
+                        currentOptions.forEach(opt => {
+                            opt.classList.add('correct-clicked');
+                        });
+                        
+                        // 加分
+                        score += 10;
+                        scoreElement.textContent = score;
+                        
+                        // 短暫延遲後進入下一題
+                        setTimeout(() => {
+                            currentIndex++;
+                            nextWord();
+                        }, 500);
+                    } else {
+                        // 錯誤答案
+                        option.classList.add('wrong');
+                        setTimeout(() => {
+                            option.remove();
+                            currentOptions = currentOptions.filter(opt => opt !== option);
+                            
+                            // 檢查是否所有選項都已消失且沒有點擊正確答案
+                            if (currentOptions.length === 0 && !correctOptionClicked) {
+                                endGame(false);
+                            }
+                        }, 500);
+                    }
+                });
+                
+                return option;
+            }
+            
+            // 開始掉落動畫
+            function startFalling(option, column) {
+                const columnHeight = column.offsetHeight;
+                const optionHeight = option.offsetHeight;
+                const startTop = -optionHeight;
+                const endTop = columnHeight;
+                const duration = 6000 + Math.random() * 3000; // 6-9秒
+                
+                option.style.top = `${startTop}px`;
+                
+                const startTime = performance.now();
+                
+                function animate(currentTime) {
+                    if (!gameActive) return;
+                    
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // 計算新位置
+                    const newTop = startTop + progress * (endTop - startTop);
+                    option.style.top = `${newTop}px`;
+                    
+                    if (progress < 1) {
+                        const id = requestAnimationFrame(animate);
+                        animationFrameIds.push(id);
+                    } else {
+                        // 到達底部
+                        if (option.parentNode && !option.classList.contains('wrong') && !option.classList.contains('correct-clicked')) {
+                            option.classList.add('wrong');
+                            setTimeout(() => {
+                                if (option.parentNode) {
+                                    option.remove();
+                                    currentOptions = currentOptions.filter(opt => opt !== option);
+                                    
+                                    // 檢查是否所有選項都已消失且沒有點擊正確答案
+                                    if (currentOptions.length === 0 && !correctOptionClicked && !gameCompleted) {
+                                        endGame(false);
+                                    }
+                                }
+                            }, 500);
+                        }
+                    }
+                }
+                
+                const id = requestAnimationFrame(animate);
+                animationFrameIds.push(id);
+            }
+            
+            // 獲取隨機錯誤選項
+            function getRandomOptions(currentIndex, count) {
+                const otherWords = [...shuffledWords];
+                otherWords.splice(currentIndex, 1);
+                const shuffled = otherWords.sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, count).map(word => word.ch);
+            }
+            
+            // 結束遊戲
+            function endGame(completed) {
+                gameActive = false;
+                
+                // 更新最高分
+                if (score > highScore) {
+                    highScore = score;
+                    localStorage.setItem('highScore', highScore);
+                    highScoreElement.textContent = highScore;
+                }
+                
+                // 更新結束畫面數據
+                finalScoreElement.textContent = score;
+                finalHighScoreElement.textContent = highScore;
+                
+                // 設置結束畫面樣式和訊息
+                if (completed) {
+                    feedbackElement.classList.add('game-complete');
+                    feedbackTitle.textContent = "恭喜完成！";
+                    feedbackMessage.textContent = `你完成了所有 ${shuffledWords.length} 個單字！`;
+                } else {
+                    feedbackElement.classList.add('game-over');
+                    feedbackTitle.textContent = "Game Over";
+                    feedbackMessage.textContent = `你沒有選到正確答案！`;
+                }
+                
+                // 顯示結束畫面
+                feedbackElement.classList.add('show');
+            }
+            
+            // 重新開始遊戲
+            restartBtn.addEventListener('click', initGame);
+            
+            // 初始化遊戲
+            initGame();
+        });
+    </script>
+</body>
+</html>
