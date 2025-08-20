@@ -11,7 +11,8 @@ DA1.forEach(item => {
     } else {
         wordTranslations[item.en] = item.zh;
         wordPronunciations[item.en] = item.mp3;
-        const cleanWord = item.en.replace(/[^a-zA-Z]/g, '');
+const cleanWord = item.en.replace(/\((A|B|C|D)\)|[^a-zA-Z]/g, '');
+
         if (cleanWord !== item.en) {
             wordTranslations[cleanWord] = item.zh;
             wordPronunciations[cleanWord] = item.mp3;
@@ -94,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         wordSpan.className = 'word';
                         wordSpan.textContent = word;
                         
-                        const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+
+	const cleanWord = word.replace(/\((A|B|C|D)\)|[^a-zA-Z]/g, '');
                         wordSpan.dataset.cleanWord = cleanWord;
                         
                         wordSpan.addEventListener('click', function() {
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 處理詞性標記
             let translationText = DA2[index].zh;
             translationText = markPartOfSpeech(translationText);
-            
+
             transDiv.innerHTML = translationText;
             transDiv.style.display = 'none';
             paraContainer.appendChild(transDiv);
@@ -132,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 標記詞性（添加顏色樣式）
 function markPartOfSpeech(text) {
+
     // 名詞 [名]
     text = text.replace(/\[名\]/g, '<span class="pos-noun">名</span>');
     // 形容詞 [形]
@@ -150,7 +153,7 @@ function markPartOfSpeech(text) {
     // V [V]
     text = text.replace(/\[vi\]/g, '<span class="pos-v">vi</span>');
     text = text.replace(/\[vt\]/g, '<span class="pos-v">vt</span>');
-     
+        
     return text;
 }
 
@@ -218,6 +221,13 @@ function clearSelection() {
 
 // 更新翻譯顯示（支援HTML）
 function updateTranslationDisplay(original, translation) {
+
+original = original.replace('(A)', '');
+original = original.replace('(B)', '');
+original = original.replace('(C)', '');
+original = original.replace('(D)', '');
+
+
     document.getElementById('translation-display').innerHTML = 
         `<strong><span style="font-size:25px;color:#FF0">${original}：</strong>${translation}`;
 }
