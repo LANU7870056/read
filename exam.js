@@ -22,7 +22,8 @@
         const wrongAnswersBtn = document.getElementById('wrongAnswersBtn');
         const wrongAnswersModal = document.getElementById('wrongAnswersModal');
         const wrongAnswersList = document.getElementById('wrongAnswersList');
-        const closeModal = document.querySelector('.close');
+        //const closeModal = document.querySelector('.close');
+        const closeModal = document.querySelector('.modal-close-fixed');
         const downloadWrongBtn = document.getElementById('downloadWrongBtn');
 
         function formatQuestionText(text) {
