@@ -17,7 +17,7 @@
  #display-area {
             position: fixed;
             top: 40px;
-            left: 0px;
+            left: -150px;
             right: 0px;
             height: 60px;
             background: linear-gradient(to right, #749B00, #CCD700);
@@ -47,7 +47,7 @@
 .top-bar3 {
   position: absolute;      /* 固定在頁面上方 */
   top: 100px;
-  left: 0;
+  left: 0px;
   width: 100%;             /* 滿版寬度 */
   height: 40px;           /* 高度 100px */
   background-color: #772B1A;
@@ -301,27 +301,26 @@ font-size: 20px;
         }
 
 
-
 #pronunciation-area {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 30px;
+    right: 0px;
     z-index: 9999;
 }
 
 #buttons-container {
     display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 10px;
+    flex-direction: row; /* 橫向排列四個按鈕 */
+    gap: 12px;
+    background-color: rgba(255, 255, 0, 0.8);
+    padding: 10px 14px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* 每個按鈕組內：按鈕在上、文字在下 */
     align-items: center;
 }
 
