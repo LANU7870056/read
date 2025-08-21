@@ -11,8 +11,11 @@
             height: 100vh;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             color: #333;
+            background-color: #772B1A;
             overflow: hidden;
         }
+
+
 
  #display-area {
             position: fixed;
@@ -31,11 +34,31 @@
             z-index: 100;
         }
 
+
+.top-bar-wrapper {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+
+
+.top-bar-right {
+ position: absolute;      /* 固定在頁面上方 */
+  width: 50%;
+right:0px;
+height: 40px;           /* 高度 100px */
+  top: 0px;
+  background-color: #772B1A; /* 右側也用相同顏色 */
+}
+
 .top-bar2 {
   position: absolute;      /* 固定在頁面上方 */
   top: 0px;
   left: 0;
-  width: 100%;             /* 滿版寬度 */
+  width: 50%;             /* 滿版寬度 */
   height: 40px;           /* 高度 100px */
   background-color: #772B1A;
   display: flex;           /* 使用 Flexbox 排列三欄 */
@@ -303,7 +326,7 @@ font-size: 20px;
 
 #pronunciation-area {
     position: fixed;
-    top: 30px;
+    top: 0px;
     right: 0px;
     z-index: 9999;
 }
@@ -311,11 +334,11 @@ font-size: 20px;
 #buttons-container {
     display: flex;
     flex-direction: row; /* 橫向排列四個按鈕 */
-    gap: 12px;
+    gap: 2px;
     background-color: rgba(255, 255, 0, 0.8);
-    padding: 10px 14px;
+    padding: 0px 14px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.15);
 }
 
 .btn-group {
@@ -339,7 +362,7 @@ font-size: 20px;
 }
 
 .btn-text {
-    margin-top: 4px;
+    margin-top: 0px;
     font-size: 14px;
     color: #333;
 }
