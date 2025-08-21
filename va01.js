@@ -1,20 +1,20 @@
 const DA0 = [
-{en:"01. When writing a formal letter, it is better to keep the content _____ and to the point. (A) succinct　(B) sufficient　(C) supplement　(D) applicable"},
-{en:"02.Purchasing a new apartment is a _____ decision. We should go through detailed research and discussion before we make the final deal. (A) worthwhile　(B) digital　(C) critical　(D) potential"},
-{en:"03.Unable to deny the evidence pointing to him, the murderer claims that the police _____ evidence against him. (A) completed　(B) complicated　(C) contemplated　(D) fabricated"},
-{en:"04.In December, the whole city is filled with joyful atmosphere. We were _____ by the Christmas lights and decorations along the streets. (A) wandered　(B) advocated　(C) enhanced　(D) enchanted"},
-{en:"05.Our company plans to build new factories to accommodate expanding orders. But we still haven't found ideal _____ for our purpose. (A) libraries　(B) penalties　(C) premises　(D) assemblies"},
-{en:"06.Due to frequently occurred terrorist attack, everyone is required to go through the _____ check before entering the city hall . (A) conservation　(B) radiation　(C) security　(D) confidential"},
-{en:"07.Jerry is a very _____ man. He ponders on every possible choice and analyzes its pros and cons before making each decision. (A) sensitive　(B) intrusive　(C) sensible　(D) considerable"}];
+{en:"01. When writing a formal letter, it is better to keep the content ＿ and to the point. (A)succinct　(B)sufficient　(C)supplement　(D)applicable"},
+{en:"02.Purchasing a new apartment is a ＿ decision. We should go through detailed research and discussion before we make the final deal. (A)worthwhile　(B)digital　(C)critical　(D)potential"},
+{en:"03.Unable to deny the evidence pointing to him, the murderer claims that the police ＿ evidence against him. (A)completed　(B)complicated　(C)contemplated　(D)fabricated"},
+{en:"04.In December, the whole city is filled with joyful atmosphere. We were ＿ by the Christmas lights and decorations along the streets. (A)wandered　(B)advocated　(C)enhanced　(D)enchanted"},
+{en:"05.Our company plans to build new factories to accommodate expanding orders. But we still haven't found ideal ＿ for our purpose. (A)libraries　(B)penalties　(C)premises　(D)assemblies"},
+{en:"06.Due to frequently occurred terrorist attack, everyone is required to go through the ＿ check before entering the city hall . (A)conservation　(B)radiation　(C)security　(D)confidential"},
+{en:"07.Jerry is a very ＿ man. He ponders on every possible choice and analyzes its pros and cons before making each decision. (A)sensitive　(B)intrusive　(C)sensible　(D)considerable"}];
 
 const DA2 = [
-{zh:"1.【A】撰寫正式書信時，最好能維持內容簡明扼要，並切入重點。(A) 簡明扼要　(B) 足夠的　(C) 補充物　(D) 適用的"},
-{zh:"2【C】購買新公寓是一個重大的決定，我們應該在做最終買賣前經過詳細的研究和討論。(A) 值得的　(B) 數位的　(C) 重大的　(D) 潛在的"},
-{zh:"3【D】那位兇手無法否認指向他的證據，便聲稱警方捏造對他不利的證據。(A) 完成　(B) 複雜的　(C) 沉思　(D) 捏"},
-{zh:"4【D】在十二月份，整座城市都充滿歡樂的氣氛。我們都陶醉於沿路的聖誕燈飾及擺設。(A) 遊蕩　(B) 提倡　(C) 增加　(D) 陶醉"},
-{zh:"5【C】我們公司計畫要蓋新工廠來容納越來越多的訂單，但我們還沒找到理想的廠址。(A) 圖書館　(B) 懲罰　(C) 廠址　(D) 集會"},
-{zh:"6【C】因為恐怖攻擊事件頻繁發生，每個人在進入市政廳前都必須通過安全檢查。(A) 保育　(B) 輻射　(C) 安全　(D) 機密的"},
-{zh:"7【C】Jerry是一個很明智的人，他在做每個決定前都會思考各個可能的選擇並分析其利弊。<BR>(A) 敏感的　(B) 侵入性的　(C) 明智的　(D) 相當的"}];
+{zh:"1.【A】撰寫正式書信時，最好能維持內容簡明扼要，並切入重點。(A)簡明扼要　(B)足夠的　(C)補充物　(D)適用的"},
+{zh:"2【C】購買新公寓是一個重大的決定，我們應該在做最終買賣前經過詳細的研究和討論。(A)值得的　(B)數位的　(C)重大的　(D)潛在的"},
+{zh:"3【D】那位兇手無法否認指向他的證據，便聲稱警方捏造對他不利的證據。(A)完成　(B)複雜的　(C)沉思　(D)捏"},
+{zh:"4【D】在十二月份，整座城市都充滿歡樂的氣氛。我們都陶醉於沿路的聖誕燈飾及擺設。(A)遊蕩　(B)提倡　(C)增加　(D)陶醉"},
+{zh:"5【C】我們公司計畫要蓋新工廠來容納越來越多的訂單，但我們還沒找到理想的廠址。(A)圖書館　(B)懲罰　(C)廠址　(D)集會"},
+{zh:"6【C】因為恐怖攻擊事件頻繁發生，每個人在進入市政廳前都必須通過安全檢查。(A)保育　(B)輻射　(C)安全　(D)機密的"},
+{zh:"7【C】Jerry是一個很明智的人，他在做每個決定前都會思考各個可能的選擇並分析其利弊。<BR>(A)敏感的　(B)侵入性的　(C)明智的　(D)相當的"}];
 
 const DA1 = [{ en: "When", zh: "[副][連]pro[名]何時", mp3: "888"},
 { en: "writing", zh: "[名]書寫；寫作", mp3: "12823"},
