@@ -1,11 +1,11 @@
 const DA0 = [
-{en:"01. When writing a formal letter, it is better to keep the content ＿ and to the point. (A)succinct　(B)sufficient　(C)supplement　(D)applicable"},
-{en:"02.Purchasing a new apartment is a ＿ decision. We should go through detailed research and discussion before we make the final deal. (A)worthwhile　(B)digital　(C)critical　(D)potential"},
-{en:"03.Unable to deny the evidence pointing to him, the murderer claims that the police ＿ evidence against him. (A)completed　(B)complicated　(C)contemplated　(D)fabricated"},
-{en:"04.In December, the whole city is filled with joyful atmosphere. We were ＿ by the Christmas lights and decorations along the streets. (A)wandered　(B)advocated　(C)enhanced　(D)enchanted"},
-{en:"05.Our company plans to build new factories to accommodate expanding orders. But we still haven't found ideal ＿ for our purpose. (A)libraries　(B)penalties　(C)premises　(D)assemblies"},
-{en:"06.Due to frequently occurred terrorist attack, everyone is required to go through the ＿ check before entering the city hall . (A)conservation　(B)radiation　(C)security　(D)confidential"},
-{en:"07.Jerry is a very ＿ man. He ponders on every possible choice and analyzes its pros and cons before making each decision. (A)sensitive　(B)intrusive　(C)sensible　(D)considerable"}];
+{en:" 1. When writing a formal letter, it is better to keep the content ＿ and to the point. (A)succinct　(B)sufficient　(C)supplement　(D)applicable"},
+{en:" 2.Purchasing a new apartment is a ＿ decision. We should go through detailed research and discussion before we make the final deal. (A)worthwhile　(B)digital　(C)critical　(D)potential"},
+{en:" 3.Unable to deny the evidence pointing to him, the murderer claims that the police ＿ evidence against him. (A)completed　(B)complicated　(C)contemplated　(D)fabricated"},
+{en:" 4.In December, the whole city is filled with joyful atmosphere. We were ＿ by the Christmas lights and decorations along the streets. (A)wandered　(B)advocated　(C)enhanced　(D)enchanted"},
+{en:" 5.Our company plans to build new factories to accommodate expanding orders. But we still haven't found ideal ＿ for our purpose. (A)libraries　(B)penalties　(C)premises　(D)assemblies"},
+{en:" 6.Due to frequently occurred terrorist attack, everyone is required to go through the ＿ check before entering the city hall . (A)conservation　(B)radiation　(C)security　(D)confidential"},
+{en:" 7.Jerry is a very ＿ man. He ponders on every possible choice and analyzes its pros and cons before making each decision. (A)sensitive　(B)intrusive　(C)sensible　(D)considerable"}];
 
 const DA2 = [
 {zh:"1.【A】撰寫正式書信時，最好能維持內容簡明扼要，並切入重點。(A)簡明扼要　(B)足夠的　(C)補充物　(D)適用的"},
