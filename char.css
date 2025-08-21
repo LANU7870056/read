@@ -1,4 +1,17 @@
 /* 整體樣式 */
+
+.fixed-box {
+  position: fixed;
+  bottom: 20px;   /* 距離底部 20px */
+  right: 20px;    /* 距離右邊 20px */
+  background-color: #4A90E2;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;  /* 確保在最上層 */
+}
+
 a {
   text-decoration: none;
   //color: #0077cc; /* 自訂顏色 */
