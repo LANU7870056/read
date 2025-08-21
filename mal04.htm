@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>郵政考試測驗系統</title>
     <script src="mal04.js"></script>
-    <link rel="stylesheet" href="exam.css">
+    <link rel="stylesheet" href="exam2.css">
 </head>
 <body>
     <div class="top-bar2">
         <div class="left-item"><a href="exam.htm#q"><img src="home.png"></a></div>
-        <div class="center-item">電腦測驗系統[mal-04]</div>
+        <div class="center-item">郵政模考04[mal-04]</div>
     </div>  
     
     <div class="question-nav" id="questionNav"></div>    
@@ -21,14 +21,17 @@
 <button class="score-btn" id="scoreBtn">評分</button>
 <button class="wrong-answers-btn" id="wrongAnswersBtn" style="display:none;">答錯題目</button>
     <div class="result" id="result"></div>    
-<!-- 彈出視窗 -->
+ <!-- 彈出視窗 -->
     <div id="wrongAnswersModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>答錯題目複習</h2>
+            <div class="modal-header">
+                <h2>答錯題目複習</h2>
+                <button id="downloadWrongBtn" class="download-btn">下載答錯題目</button>
+            </div>
             <div id="wrongAnswersList"></div>
         </div>
-    </div>
+</div>
     <script src="exam.js"></script>
 
 </body>
