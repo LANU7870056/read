@@ -1,7 +1,7 @@
         // 隨機選取10題
         const selectedQuestions = [];
         const totalQuestions = exam.length;
-        const questionsToSelect = Math.min(10, totalQuestions);
+        const questionsToSelect = Math.min(20, totalQuestions);
         const shuffledExam = [...exam].sort(() => Math.random() - 0.5);
 
         for (let i = 0; i < questionsToSelect; i++) {
@@ -115,7 +115,7 @@
                 }
             });
             
-            const score = correctCount * 10;
+            const score = correctCount * 5;
             const totalPossible = selectedQuestions.length * 10;
             
             resultDiv.innerHTML = `
