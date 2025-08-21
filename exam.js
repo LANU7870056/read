@@ -116,7 +116,7 @@
             });
             
             const score = correctCount * 5;
-            const totalPossible = selectedQuestions.length * 10;
+            const totalPossible = selectedQuestions.length *5;
             
             resultDiv.innerHTML = `
                 <p>您的得分: <span class="${score >= 60 ? 'correct' : 'incorrect'}">${score}分</span> (滿分: ${totalPossible}分)</p>
