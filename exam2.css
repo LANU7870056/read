@@ -1,97 +1,91 @@
-﻿.zhuyin {
-  font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
-}
-.zhuyin {
-  font-size: 1.5em;
-  line-height: 2;
-}
-body {
+﻿        .zhuyin {
+          font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+        }
+        .zhuyin {
+          font-size: 1.5em;
+          line-height: 2;
+        }
+        body {
             font-family: Arial, sans-serif;
             max-width: 900px;
             margin: 0 auto;
             padding: 80px 10px;
-font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
-  font-weight: bold;
-
+            font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+            font-weight: bold;
         }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 10px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-   font-weight: bold;
-  font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
-  font-size: 1.5em;
-  line-height: 2;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            font-weight: bold;
+            font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
+            font-size: 1.5em;
+            line-height: 2;
+        }
 
+        .row-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-}
+        .top-bar2 {
+          position: absolute;
+          top: 0px;
+          left: 0;
+          width: 100%;
+          height: 40px;
+          background-color: #772B1A;
+          display: flex;
+          align-items: center;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.row-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .left-item {  
+          color: white;
+          margin-left: 5px;
+        }
 
-.top-bar2 {
-  position: absolute;      /* 固定在頁面上方 */
-  top: 0px;
-  left: 0;
-  width: 100%;             /* 滿版寬度 */
-  height: 40px;           /* 高度 40px */
-  background-color: #772B1A;
-  display: flex;           /* 使用 Flexbox 排列 */
-  align-items: center;     /* 垂直置中 */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 陰影效果 */
-}
+        .left-item a {
+          color: white;
+          text-decoration: none;
+        }
+        .center-item {
+          font-size: 24px;
+          color: yellow;
+          width: 300px;  
+          position: absolute;
+          left: 300px;
+          transform: translateX(-70%);
+        }
 
-.left-item {  
-  color: white;
-  margin-left: 5px;      /* 左邊留一些間距 */
-}
+        .option-box {
+            display: inline-block;
+            padding: 2px 2px;
+            margin: 0 2px;
+            border: 1px solid #ccc;
+            background-color: #ffffcc;
+            border-radius: 3px;
+            border-radius: 50%; 
+            font-weight: bold;
+        }
 
-.left-item a {
-  color: white;
-  text-decoration: none; /* 如果你不想要底線 */
-}
-.center-item {
-  font-size: 24px;
-  color: yellow;
-  width: 300px;  
-  position: absolute;     /* 絕對定位 */
-  left: 300px;             /* 從左邊50%開始 */
-  transform: translateX(-70%); /* 向左移動自身寬度的50% */
-}
-
-
-.option-box {
-    display: inline-block;
-    padding: 2px 2px;
-    margin: 0 2px;
-    border: 1px solid #ccc;
-    background-color: #ffffcc; /* 淺黃色 */
-    border-radius: 3px;
-    border-radius: 50%; 
-    font-weight: bold;
-}
-
-
-
-.question-nav {
+        .question-nav {
             display: flex;
             flex-wrap: wrap;
             gap: 1px;
             margin-bottom: 5px;
             align-items: center;
- 	justify-content: center; 
+            justify-content: center; 
         }
 
-.question-nav button.number {  /*1-20*/
+        .question-nav button.number {
             width: 35px;
             height: 35px;
             font-size: 18px;
@@ -100,19 +94,19 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             background-color: #FF50A7;
             align-items: center;
         }
-.question-nav button.answered {
+        .question-nav button.answered {
             background-color: #ddd;
         }
-.question-nav button.current {
+        .question-nav button.current {
             background-color: #4CAF50;
             color: white;
         }
-.options-container {
+        .options-container {
             display: flex;
             gap: 5px;
             margin-left: 10px;
         }
-.options-container button {  /*ABCD*/
+        .options-container button {
             width: 40px;
             height: 30px;
             font-size: 24px;
@@ -120,10 +114,10 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             background-color: #B0EB00;
             border: 1px solid #ccc;
         }
-.options-container button.selected {
+        .options-container button.selected {
             background-color: #ddd;
         }
-.question-container {   /*題目*/
+        .question-container {
             border: 1px solid #ddd;
             padding: 1px;
             margin-bottom: 20px;
@@ -131,10 +125,10 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             font-size: 26px;
             line-height: 1.4;
         }
-.question-container p {
+        .question-container p {
             margin: 0;
         }
-.score-btn {
+        .score-btn {
             padding: 10px 20px;
             font-size: 16px;
             background-color: #4CAF50;
@@ -143,29 +137,29 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             cursor: pointer;
             margin-top: 20px;
         }
-.score-btn:hover {
+        .score-btn:hover {
             background-color: #45a049;
         }
-.result {
+        .result {
             margin-top: 20px;
             font-size: 20px;
             font-weight: bold;
         }
 
-.correct {
+        .correct {
             color: green;
         }
 
-.incorrect {
+        .incorrect {
             color: red;
         }
-.option {
+        .option {
             display: block;
             margin-top: 10px;
         }
         
-        /* 新增模態視窗樣式 */
-.modal {
+        /* 模態視窗樣式 */
+        .modal {
             display: none;
             position: fixed;
             z-index: 1;
@@ -177,7 +171,7 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             background-color: rgba(0,0,0,0.4);
         }
         
-.modal-content {
+        .modal-content {
             background-color: #fefefe;
             margin: 1% auto;
             padding: 20px;
@@ -188,7 +182,7 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             overflow-y: auto;
         }
         
-.close {
+        .close {
             color: #aaa;
             float: right;
             font-size: 28px;
@@ -196,11 +190,11 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             cursor: pointer;
         }
         
-.close:hover {
+        .close:hover {
             color: black;
         }
         
-.record-btn {
+        .record-btn {
             padding: 10px 20px;
             font-size: 16px;
             background-color: #2196F3;
@@ -211,67 +205,87 @@ font-family: "Noto Sans TC", "Hanazono Mincho", "cwTeXKai", "DFKai-SB", serif;
             margin-left: 10px;
         }
         
-.record-btn:hover {
+        .record-btn:hover {
             background-color: #0b7dda;
         }
         
-.answer-record {
+        .answer-record {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
         
-.answer-record th, .answer-record td {
+        .answer-record th, .answer-record td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
         }
         
-.answer-record th {
+        .answer-record th {
             background-color: #f2f2f2;
         }
         
-.answer-record tr:nth-child(even) {
+        .answer-record tr:nth-child(even) {
             background-color: #f9f9f9;
         }
 
+        .wrong-answers-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .wrong-answers-btn:hover {
+            background-color: #d32f2f;
+        }
 
-.wrong-answers-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-left: 10px;
-}
-.wrong-answers-btn:hover {
-    background-color: #d32f2f;
-}
+        .wrong-answer-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .wrong-answer-item p {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .wrong-answer-title {
+            font-weight: bold;
+            color: #f44336;
+            margin-bottom: 10px;
+        }
 
-.wrong-answer-item {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-.wrong-answer-item p {
-    margin: 5px 0;
-    font-size: 18px;
-}
-.wrong-answer-title {
-    font-weight: bold;
-    color: #f44336;
-    margin-bottom: 10px;
-}
+        .explanation {
+            color: #00F;
+            margin-top: 10px;
+            padding: 5px;
+            font-style: normal;
+            background-color: #f5f5f5;
+            border-left: 3px solid #772B1A;
+        }
+        
+        /* 新增下载按钮样式 */
+        .download-btn {
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 15px;
+        }
 
+        .download-btn:hover {
+            background-color: #0b7dda;
+        }
 
-.explanation {
-    color: #00F;
-    //font-style: italic;
-    margin-top: 10px;
-    padding: 5px;
-font-style:  normal;
-    background-color: #f5f5f5;
-    border-left: 3px solid #772B1A;
-}
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
