@@ -11,8 +11,7 @@ DA1.forEach(item => {
     } else {
         wordTranslations[item.en] = item.zh;
         wordPronunciations[item.en] = item.mp3;
-const cleanWord = item.en.replace(/\((A|B|C|D)\)|[^a-zA-Z]/g, '');
-
+        const cleanWord = item.en.replace(/[^a-zA-Z]/g, '');
         if (cleanWord !== item.en) {
             wordTranslations[cleanWord] = item.zh;
             wordPronunciations[cleanWord] = item.mp3;
@@ -37,11 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const paraContainer = document.createElement('div');
         paraContainer.className = 'paragraph-container';
         
-        // 創建一個包裝器來包含按鈕和段落
-        const paraWrapper = document.createElement('div');
-        paraWrapper.className = 'paragraph-wrapper';
+        const paraDiv = document.createElement('div');
+        paraDiv.className = 'paragraph';
         
-        // 創建翻譯按鈕 (放在同一行)
+        // 創建翻譯按鈕 (放在第一單詞前面)
         const transBtn = document.createElement('button');
         transBtn.className = 'translation-btn';
         transBtn.textContent = '解';
@@ -51,10 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 transDiv.style.display = transDiv.style.display === 'block' ? 'none' : 'block';
             }
         });
-        paraWrapper.appendChild(transBtn);
-        
-        const paraDiv = document.createElement('div');
-        paraDiv.className = 'paragraph';
         
         // 先處理片語（避免單詞和片語重疊）
         let remainingText = paragraph.en;
@@ -69,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 處理文本並添加元素
         const segments = remainingText.split('||');
+        let firstWordAdded = false;
         
         segments.forEach(segment => {
             if (phraseTranslations[segment]) {
@@ -81,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 phraseSpan.addEventListener('click', function() {
                     handlePhraseClick(this, segment);
                 });
+                
+                // 如果是第一個單詞且還沒添加按鈕，先添加按鈕
+                if (!firstWordAdded) {
+                    paraDiv.appendChild(transBtn);
+                    firstWordAdded = true;
+                }
                 
                 paraDiv.appendChild(phraseSpan);
             } else {
@@ -95,13 +96,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         wordSpan.className = 'word';
                         wordSpan.textContent = word;
                         
-
-	const cleanWord = word.replace(/\((A|B|C|D)\)|[^a-zA-Z]/g, '');
+                        const cleanWord = word.replace(/[^a-zA-Z]/g, '');
                         wordSpan.dataset.cleanWord = cleanWord;
                         
                         wordSpan.addEventListener('click', function() {
                             handleWordClick(this, word);
                         });
+                        
+                        // 如果是第一個單詞且還沒添加按鈕，先添加按鈕
+                        if (!firstWordAdded) {
+                            paraDiv.appendChild(transBtn);
+                            firstWordAdded = true;
+                        }
                         
                         paraDiv.appendChild(wordSpan);
                     }
@@ -109,8 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        paraWrapper.appendChild(paraDiv);
-        paraContainer.appendChild(paraWrapper);
+        paraContainer.appendChild(paraDiv);
         
         // 創建翻譯段落（帶詞性標記）
         if (DA2[index]) {
@@ -120,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 處理詞性標記
             let translationText = DA2[index].zh;
             translationText = markPartOfSpeech(translationText);
-
+            
             transDiv.innerHTML = translationText;
             transDiv.style.display = 'none';
             paraContainer.appendChild(transDiv);
@@ -134,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 標記詞性（添加顏色樣式）
 function markPartOfSpeech(text) {
-
     // 名詞 [名]
     text = text.replace(/\[名\]/g, '<span class="pos-noun">名</span>');
     // 形容詞 [形]
@@ -153,7 +157,7 @@ function markPartOfSpeech(text) {
     // V [V]
     text = text.replace(/\[vi\]/g, '<span class="pos-v">vi</span>');
     text = text.replace(/\[vt\]/g, '<span class="pos-v">vt</span>');
-        
+     
     return text;
 }
 
@@ -165,7 +169,7 @@ function handleWordClick(element, originalWord) {
     const cleanWord = element.dataset.cleanWord || originalWord.replace(/[^a-zA-Z]/g, '');
     let translation = wordTranslations[originalWord] || 
                     wordTranslations[cleanWord] || 
-                    '';
+                    '未找到翻譯';
     
     // 處理詞性標記
     translation = markPartOfSpeech(translation);
@@ -221,13 +225,6 @@ function clearSelection() {
 
 // 更新翻譯顯示（支援HTML）
 function updateTranslationDisplay(original, translation) {
-
-original = original.replace('(A)', '');
-original = original.replace('(B)', '');
-original = original.replace('(C)', '');
-original = original.replace('(D)', '');
-
-
     document.getElementById('translation-display').innerHTML = 
         `<strong><span style="font-size:25px;color:#FF0">${original}：</strong>${translation}`;
 }
