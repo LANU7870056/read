@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郵政考試測驗系統</title>
+    <script src="dei-12.js"></script>
+    <link rel="stylesheet" href="exam2.css">
+</head>
+<body>
+    <div class="top-bar2">
+        <div class="left-item"><a href="exam.htm#e"><img src="home.png"></a></div>
+        <div class="center-item">地8-3~9-1</div>
+    </div>  
+    
+    <div class="question-nav" id="questionNav"></div>    
+    <div class="options-container" id="optionsContainer"></div>
+
+    <div class="question-container" id="questionContainer"></div>
+    
+    <button class="score-btn" id="scoreBtn">評分</button>
+<button class="wrong-answers-btn" id="wrongAnswersBtn" style="display:none;">答錯題目</button>
+    <div class="result" id="result"></div>    
+ <!-- 彈出視窗 -->
+    <div id="wrongAnswersModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close-fixed">&times;</span>
+            <div class="modal-header">
+                <h2>答錯題目複習</h2>
+                <button id="downloadWrongBtn" class="download-btn">下載答錯題目</button>
+            </div>
+            <div id="wrongAnswersList"></div>
+        </div>
+</div>
+    <script src="exam.js"></script>
+
+</body>
+</html>
