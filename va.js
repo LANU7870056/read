@@ -96,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         wordSpan.className = 'word';
                         wordSpan.textContent = word;
                         
-                        const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+                        	         const cleanWord = word.replace(/\([A-D]\)/g, '').replace(/[^a-zA-Z]/g, '');
+ 
                         wordSpan.dataset.cleanWord = cleanWord;
                         
                         wordSpan.addEventListener('click', function() {
