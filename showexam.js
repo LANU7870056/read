@@ -1,6 +1,8 @@
         // 提取单元信息
         exam.forEach((q, index) => {
-            const match = q.item.match(/\[(\d+-\d+)\]/);
+//const match = q.item.match(/\[(\d+-\d+)\]/);
+  const match = q.item.match(/\[([^\]]+)\]/);
+ 
             q.unit = match ? match[1] : '未知';
             q.id = index + 1;
         });

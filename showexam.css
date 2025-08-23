@@ -89,11 +89,14 @@ padding: 10px;
         .description {
             color: #7f8c8d;
             font-size: 1.1rem;
+color:#f00;
             margin-bottom: 20px;
         }
         
         .question-list {
             display: grid;
+	//color:#00F;
+
             gap: 20px;
         }
         
@@ -101,6 +104,7 @@ padding: 10px;
             background: white;
             border-radius: 8px;
             padding: 20px;
+
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             border-left: 4px solid #3498db;
         }
@@ -128,8 +132,11 @@ padding: 10px;
         
         .question-content {
             margin-bottom: 15px;
-            font-size: 17px;
+           
             line-height: 1.5;
+color:#00F;
+  font-size: 20px;
+  font-weight: bold;
         }
         
         .answer {
