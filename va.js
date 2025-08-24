@@ -11,7 +11,8 @@ DA1.forEach(item => {
     } else {
         wordTranslations[item.en] = item.zh;
         wordPronunciations[item.en] = item.mp3;
-        const cleanWord = item.en.replace(/[^a-zA-Z]/g, '');
+const cleanWord = item.en.replace(/[^a-zA-Z]/g, '');
+
         if (cleanWord !== item.en) {
             wordTranslations[cleanWord] = item.zh;
             wordPronunciations[cleanWord] = item.mp3;
@@ -96,8 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         wordSpan.className = 'word';
                         wordSpan.textContent = word;
                         
-                        	         const cleanWord = word.replace(/\([A-D]\)/g, '').replace(/[^a-zA-Z]/g, '');
- 
+//const cleanWord = word.replace(/[^a-zA-Z]/g, '');
+const cleanWord = word.replace(/\([A-D]\)/g, '').replace(/[^a-zA-Z]/g, '');
                         wordSpan.dataset.cleanWord = cleanWord;
                         
                         wordSpan.addEventListener('click', function() {
