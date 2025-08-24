@@ -30,6 +30,17 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
+        /* 頁面標題 */
+        .page-title {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
         /* TOP按鈕樣式 */
         .top-btn {
             position: fixed;
@@ -47,28 +58,20 @@
             font-weight: bold;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
         
         .top-btn:hover {
             background-color: #2980b9;
-        }
-        
-        /* 標題樣式 */
-        .section-title {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
+            transform: translateY(-3px);
         }
         
         /* 標籤樣式 */
         .tab-container {
             display: flex;
-	    font-size: 22px;
+            font-size: 22px;
             margin-bottom: 2px;
+width:400px;
             border-bottom: 1px solid #ddd;
         }
         
@@ -77,6 +80,8 @@
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s;
+            flex: 1;
+            text-align: center;
         }
         
         .tab.active {
@@ -143,6 +148,7 @@
             font-weight:bold;
             color: yellow;
             font-size: 18px;
+            text-align: center;
         }
         
         .basic-date {
@@ -165,6 +171,8 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+height:60px;
         }
         
         .news-title {
@@ -174,6 +182,18 @@
             margin-bottom: 10px;
             flex-grow: 1;
             text-align: center;
+        }
+        
+        .news-title a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+        
+        .news-title a:hover {
+            color: #3498db;
         }
         
         .news-excerpt {
@@ -230,13 +250,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .section-title {
-                font-size: 20px;
-            }
-            
             .tab {
                 padding: 8px 12px;
-                font-size: 14px;
+                font-size: 18px;
+            }
+            
+            .page-title {
+                font-size: 24px;
             }
         }
         
@@ -246,21 +266,34 @@
             }
             
             .logo {
-                height: 40px;
+                height: 50px;
                 margin-left: 10px;
             }
             
             body {
-                padding-top: 100px;
+                padding-top: 90px;
+            }
+            
+            .top-bar {
+                height: 60px;
             }
             
             .tab-container {
-                flex-direction: row;  //column;
+                flex-direction: column;
             }
             
             .tab {
                 width: 100%;
                 text-align: center;
+                margin-bottom: 5px;
+                font-size: 18px;
+                padding: 10px;
+            }
+            
+            .top-btn {
+                top: 65px;
+                width: 40px;
+                height: 40px;
             }
         }
         
@@ -277,20 +310,21 @@
 <body>
     <!-- 頂部導航欄與Logo -->
     <div class="top-bar">
-        <img src="logo.png" alt="網站Logo" class="logo">
+        <img src="https://via.placeholder.com/200x70/772B1A/FFFFFF?text=網站LOGO" alt="網站Logo" class="logo">
     </div>
     
     <!-- TOP按鈕 -->
     <a href="#" class="top-btn">TOP</a>
     
     <div class="container">
-      
+        <!-- 頁面標題 -->
+        <h1 class="page-title">最新閱讀資源</h1>
         
         <!-- 標籤選項 -->
         <div class="tab-container">
-            <div class="tab basic-tab active" onclick="showTab('basic')">基礎篇</div>
-            <div class="tab advanced-tab" onclick="showTab('advanced')">單字文法篇</div>
-            <div class="tab practical-tab" onclick="showTab('practical')">實用篇</div>
+            <div class="tab basic-tab active" data-tab="basic" data-anchor="q">基礎篇</div>
+            <div class="tab advanced-tab" data-tab="advanced" data-anchor="w">單字文法篇</div>
+            <div class="tab practical-tab" data-tab="practical" data-anchor="e">實用篇</div>
         </div>
         
         <!-- 基礎篇內容 -->
@@ -328,14 +362,13 @@
                     </div>
                 </div>
                            
- <!-- 新聞項目 6-->
+                <!-- 新聞項目 6-->
                 <div class="news-item">
                     <div class="news-date basic-date">基礎篇</div>
                     <div class="news-content">
                         <h3 class="news-title"><a href="read06.htm">06酒精與車禍</a></h3>
                     </div>
                 </div>
-
 
                 <!-- 新聞項目 5 -->
                 <div class="news-item">
@@ -344,17 +377,13 @@
                         <h3 class="news-title"><a href="read07.htm">07雷射眼睛</a></h3>
                     </div>
                 </div>
-
-               
-
             </div>
         </div>
         
         <!-- 進階篇內容 -->
         <div id="advanced-content" class="tab-content">
             <div class="news-container">
-
-
+              
 
 <!-- 新聞項目2 -->
                 <div class="news-item">
@@ -464,39 +493,101 @@
                         <h3 class="news-title"><a href="va16.htm">文法8B</a></h3>
 </div> </div>     
 
-  
+
+
             </div>
         </div>
         
         <!-- 實用篇內容 -->
         <div id="practical-content" class="tab-content">
             <div class="news-container">
-<!-- 新聞項目 1 -->
-                <div class="news-item">
-                    <div class="news-date practical-date">單字文法篇</div>
+                <div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
                     <div class="news-content">
-                        <h3 class="news-title"><a href="X.htm">施工。。</a></h3>
+                        <h3 class="news-title"><a href="vb01.htm">9A</a></h3>
                     </div>
                 </div>
+                
+                <div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="vb02.htm">9B</a></h3>
+                    </div>                </div>
 
-            
-              
+<div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="vb03.htm">10A</a></h3>
+</div></div><!-- 實用篇1 -->
+<div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="vb04.htm">10B</a></h3>
+</div></div><!-- 實用篇1 -->
+
+
+<div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="vb05.htm">11A</a></h3>
+</div></div><!-- 實用篇1 -->
+<div class="news-item"><!-- 實用篇1 -->
+                    <div class="news-date practical-date">實用篇</div>
+                    <div class="news-content">
+                        <h3 class="news-title"><a href="vb06.htm">11B</a></h3>
+</div></div><!-- 實用篇1 -->
+
+
+
+
             </div>
         </div>
     </div>
 
     <script>
-        // TOP按鈕功能
-        document.querySelector('.top-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // 標籤與錨點映射
+        const tabMap = {
+            'basic': 'q',
+            'advanced': 'w',
+            'practical': 'e'
+        };
+        
+        const anchorMap = {
+            'q': 'basic',
+            'w': 'advanced',
+            'e': 'practical'
+        };
+        
+        // 初始化頁面
+        function initPage() {
+            // TOP按鈕功能
+            document.querySelector('.top-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+            
+            // 為所有標籤添加點擊事件
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    const anchor = this.getAttribute('data-anchor');
+                    showTab(tabId, anchor);
+                });
+            });
+            
+            // 檢查URL中的錨點並切換到對應標籤
+            const hash = window.location.hash;
+            if (hash && anchorMap[hash.substring(1)]) {
+                const tabId = anchorMap[hash.substring(1)];
+                showTab(tabId, hash.substring(1), false);
+            }
+        }
         
         // 標籤切換功能
-        function showTab(tabId) {
+        function showTab(tabId, anchor, updateHistory = true) {
             // 隱藏所有內容
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
@@ -511,24 +602,28 @@
             document.getElementById(tabId + '-content').classList.add('active');
             
             // 為選中的標籤添加active類
-            event.currentTarget.classList.add('active');
+            const activeTab = document.querySelector(`.tab[data-tab="${tabId}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+            
+            // 更新URL錨點
+            if (updateHistory) {
+                window.location.hash = anchor;
+            }
         }
-
-
-const tabMap = {
-  '#q': '.basic-tab',
-  '#w': '.advanced-tab',
-  '#e': '.practical-tab',
-};
-
-
-
-
-const target = tabMap[window.location.hash];
-if (target) {
-  document.querySelector(target)?.click();
-}
-
+        
+        // 頁面載入時初始化
+        window.addEventListener('DOMContentLoaded', initPage);
+        
+        // 監聽hash變化（當用戶手動修改URL時）
+        window.addEventListener('hashchange', function() {
+            const hash = window.location.hash;
+            if (hash && anchorMap[hash.substring(1)]) {
+                const tabId = anchorMap[hash.substring(1)];
+                showTab(tabId, hash.substring(1), false);
+            }
+        });
     </script>
 </body>
 </html>
