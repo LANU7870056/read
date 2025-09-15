@@ -1,4 +1,14 @@
         // 隨機選取10題
+
+path=window.location.pathname;   // /page.html
+
+  const filename = path.substring(path.lastIndexOf('/') + 1); // dei-01.htm
+  const nameOnly = filename.split('.')[0]; // dei-01
+  ana=nameOnly;
+
+
+
+
         const selectedQuestions = [];
         const totalQuestions = exam.length;
         const questionsToSelect = Math.min(20, totalQuestions);
@@ -119,7 +129,10 @@
             const totalPossible = selectedQuestions.length *5;
             
             resultDiv.innerHTML = `
+<button style=" background-color: yellow;;font-size: 24px;"  class='score-btn9'  onclick="window.open('https://script.google.com/macros/s/AKfycbzsH1lD3ulRt1Ee2zeHJyjwgyg6VyPDgiZR8Qs8uiIaPkrsc4C0n9vSRqcewg7ktMeIzA/exec?item=${ana}&score=${score}', '_blank')">送出分數</button>
                 <p>您的得分: <span class="${score >= 60 ? 'correct' : 'incorrect'}">${score}分</span> (滿分: ${totalPossible}分)</p>
+
+
                 <p>答對題數: ${correctCount}題 / ${selectedQuestions.length}題</p>
             `;
             
