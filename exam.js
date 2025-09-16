@@ -130,9 +130,29 @@ path=window.location.pathname;   // /page.html
             
             const score = correctCount * 5;
             const totalPossible = selectedQuestions.length *5;
+
+
+alert("登錄分數…");
+//alert(score);
+url="score.htm?item=" + ana + "&score=" + score;
+
+
+  document.getElementById("scoreBtn").style.display = "none";
+
+
+  // 建立 iframe 元素
+  var iframe = document.createElement("iframe");
+
+  // 設定屬性
+  iframe.id = "hiddenFrame";
+  iframe.src = url;
+  iframe.style.display = "none"; // 隱藏 iframe
+
+  // 加入到 body 中
+  document.body.appendChild(iframe);
+
             
             resultDiv.innerHTML = `
-<button style=" background-color: yellow;;font-size: 24px;"  class='score-btn9'  onclick="window.open('score.htm?item=${ana}&score=${score}','_self')">送出分數</button>
 
                 <p>您的得分: <span class="${score >= 60 ? 'correct' : 'incorrect'}">${score}分</span> (滿分: ${totalPossible}分)</p>
 
