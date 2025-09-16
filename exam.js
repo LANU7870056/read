@@ -132,7 +132,7 @@ path=window.location.pathname;   // /page.html
             const totalPossible = selectedQuestions.length *5;
             
             resultDiv.innerHTML = `
-<button style=" background-color: yellow;;font-size: 24px;"  class='score-btn9'  onclick="window.open('https://script.google.com/macros/s/AKfycbyIga__G_zO50Il695V_Wo7pGJ6UMBW12OBeVnRI0S7VP2oqFV31M6iRzLMcAzEHzfxQA/exec?item=${ana}&score=${score}','_self')">送出分數</button>
+<button style=" background-color: yellow;;font-size: 24px;"  class='score-btn9'  onclick="window.open('score.htm?item=${ana}&score=${score}','_self')">送出分數</button>
 
                 <p>您的得分: <span class="${score >= 60 ? 'correct' : 'incorrect'}">${score}分</span> (滿分: ${totalPossible}分)</p>
 
