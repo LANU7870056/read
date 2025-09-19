@@ -1,0 +1,127 @@
+    <meta charset="UTF-8">
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手機號碼驗證</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="tel"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 250px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainContainer" style="display: none;">
+    <h2>手機號碼驗證</h2>
+    <input type="tel" id="phoneNumber" placeholder="請輸入手機號碼">
+    <button onclick="checkAndSaveNumber()">驗證並儲存</button>
+    <div id="message"></div>
+</div>
+
+<script>
+    const pho = [
+       { ph: '022' },
+       { ph: '330' },
+    ];
+
+    // 頁面載入時立即執行
+    window.onload = function() {
+        const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+        let phoneInCookie = null;
+        for (const cookie of cookies) {
+            if (cookie.startsWith('user_phone=')) {
+                phoneInCookie = cookie.substring('user_phone='.length);
+                break;
+            }
+        }
+        
+        // 檢查 Cookie 中的號碼是否合法
+        const foundInPho = pho.some(item => item.ph === phoneInCookie);
+        
+        if (foundInPho) {
+            // 如果號碼不合法，立即轉址
+            window.location.href = 'exam.htm';
+        } else {
+            // 如果號碼不合法或不存在，顯示輸入框
+            document.getElementById('mainContainer').style.display = 'block';
+        }
+    };
+
+    function checkAndSaveNumber() {
+        const inputNumber = document.getElementById('phoneNumber').value.trim();
+        const messageDiv = document.getElementById('message');
+
+        const phoneRegex = /^(09)\d{8}$/;
+        if (!phoneRegex.test(inputNumber)) {
+            messageDiv.textContent = '請輸入正確手機號碼（驗證碼）';
+            messageDiv.className = 'error';
+            return;
+        }
+
+        const found = pho.some(item => item.ph === inputNumber);
+
+        if (found) {
+            document.cookie = `user_phone=${inputNumber}; path=/; max-age=${60 * 60 * 24 * 7}`;
+            messageDiv.textContent = `號碼 ${inputNumber} 驗證成功，已儲存到 Cookie！`;
+            messageDiv.className = 'success';
+            // 轉址到 123.htm
+            window.location.href = 'exam.htm';
+        } else {
+            messageDiv.textContent = '此號碼不在資料庫中，請重新輸入。';
+            messageDiv.className = 'error';
+            document.getElementById('phoneNumber').value = '';
+        }
+    }
+</script>
+
+</body>
+</html>

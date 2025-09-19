@@ -4,6 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>電腦線上測驗</title>
+<script>
+
+
+// 你的電話號碼清單
+const pho = [
+    { ph: '022' },
+    { ph: '330' },
+];
+
+// 取得指定 cookie 的值
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// 檢查 user_phone cookie
+const user_phone = getCookie('user_phone');
+
+// 檢查電話號碼是否在清單中
+const isPhoneValid = pho.some(item => item.ph === user_phone);
+
+// 如果 user_phone 是空值或不在清單中，則重定向
+if (!user_phone || user_phone.trim() === '' || !isPhoneValid) {
+    window.location.href = 'GOO.htm';
+}
+
+function red() {
+    const ur = "https://lanu7870056.github.io/read/score.htm?item=aa&score=10&ph=" + user_phone;
+    alert(ur);
+    window.open(ur, "_blank");
+}
+
+</script>
+
     <style>
         /* 全局樣式 */
 a {
@@ -828,9 +868,11 @@ a {
                 window.location.hash = hash;
             }
         }
+
+
     </script>
 <h1>
-<a href="https://lanu7870056.github.io/read/score.htm?item=aa&score=10" target="_blank">測試</a>
+<button onclick="red()">測試</button>
 <a href="https://docs.google.com/spreadsheets/d/1dg1h8MvBYhXxDoIIngbifbuuQGC7FAjUtteuiaJrRuw/edit?usp=drive_link" target="_blank">分數</a>
 </h1>
 
