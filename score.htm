@@ -14,8 +14,9 @@ let params = new URLSearchParams(window.location.search);
 let go = params.get("go");
 let score = params.get("score");
 let item = params.get("item");
+let ph = params.get("ph");
 
-let url="https://script.google.com/macros/s/AKfycbw0CAC9FVgKXTmrMmtJ23dHQouXjFlOryRP54k278AP0APIShYKhnMapbiidoiuENNdXA/exec?item="+item +"&score=" +score;
+let url="https://script.google.com/macros/s/AKfycbwv_7CQaRW18SANty5lAQE7xPxoQwWenSN89kI256ITTTjLu7Irj54KxNiT0LeBL2MNhg/exec?item="+item +"&score=" +score+"&ph=" +ph;
 
 setTimeout(function() {
   window.location.replace(url);
