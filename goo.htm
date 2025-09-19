@@ -100,12 +100,12 @@
         const inputNumber = document.getElementById('phoneNumber').value.trim();
         const messageDiv = document.getElementById('message');
 
-        const phoneRegex = /^(09)\d{8}$/;
-        if (!phoneRegex.test(inputNumber)) {
-            messageDiv.textContent = '請輸入正確手機號碼（驗證碼）';
-            messageDiv.className = 'error';
-            return;
-        }
+        //const phoneRegex =/^\d{3}$/;
+        //if (!phoneRegex.test(inputNumber)) {
+        //    messageDiv.textContent = '請輸入正確手機號碼（驗證碼）';
+        //    messageDiv.className = 'error';
+        //    return;
+        //}
 
         const found = pho.some(item => item.ph === inputNumber);
 
@@ -113,7 +113,7 @@
             document.cookie = `user_phone=${inputNumber}; path=/; max-age=${60 * 60 * 24 * 7}`;
             messageDiv.textContent = `號碼 ${inputNumber} 驗證成功，已儲存到 Cookie！`;
             messageDiv.className = 'success';
-            // 轉址到 123.htm
+            // 轉址到 exam.htm
             window.location.href = 'exam.htm';
         } else {
             messageDiv.textContent = '此號碼不在資料庫中，請重新輸入。';

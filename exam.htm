@@ -7,6 +7,8 @@
 <script>
 
 
+
+
 // 你的電話號碼清單
 const pho = [
     { ph: '022' },
@@ -37,8 +39,7 @@ if (!user_phone || user_phone.trim() === '' || !isPhoneValid) {
 }
 
 function red() {
-    const ur = "https://lanu7870056.github.io/read/score.htm?item=aa&score=10&ph=" + user_phone;
-    alert(ur);
+    const ur = "https://lanu7870056.github.io/read/score.htm?item=aa&score=10&ph=" + user_phone;  
     window.open(ur, "_blank");
 }
 
@@ -874,6 +875,8 @@ a {
 <h1>
 <button onclick="red()">測試</button>
 <a href="https://docs.google.com/spreadsheets/d/1dg1h8MvBYhXxDoIIngbifbuuQGC7FAjUtteuiaJrRuw/edit?usp=drive_link" target="_blank">分數</a>
+<a href="clsx.htm" target="_blank">登出</a>
+
 </h1>
 
 
