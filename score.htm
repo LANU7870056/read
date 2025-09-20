@@ -10,11 +10,27 @@
 <div>
 <script>
 
+// 取得指定 cookie 的值
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// 檢查 user_phone cookie
+const ph = getCookie('user_phone');
+
+
 let params = new URLSearchParams(window.location.search);
 let go = params.get("go");
 let score = params.get("score");
 let item = params.get("item");
-let ph = params.get("ph");
+//let ph = params.get("ph");
 
 let url="https://script.google.com/macros/s/AKfycbwv_7CQaRW18SANty5lAQE7xPxoQwWenSN89kI256ITTTjLu7Irj54KxNiT0LeBL2MNhg/exec?item="+item +"&score=" +score+"&ph=" +ph;
 

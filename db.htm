@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國文题庫</title>
+    <link rel="stylesheet" href="showexam2.css">
+</head>
+<body>
+
+<div class="top-bar2">
+    <div class="spacer">
+        <a href="#"  onclick="history.back()" class="home-center-link">
+        <img src="home.png" alt="回首頁" class="home-center-icon"> </a>
+
+    </div>
+    <img src="mlogoexam.png" alt="網站Logo" class="logo">
+    <div class="toptitle">~~</div>
+</div>
+<header></header>
+
+<div class="question-list" id="question-list">
+    </div>
+    
+<div class="pagination" id="pagination">
+    </div>
+
+<script>
+    // 取得網址中的所有參數，只需執行一次
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // 取得標題名稱 (使用正確的 'n' 參數)
+    const titleName = urlParams.get('pp');
+    if (titleName) {
+        const titleElement = document.querySelector('.toptitle');
+        if (titleElement) {
+            titleElement.textContent = titleName;
+        }
+    }
+
+    // 取得腳本名稱 (使用 'p' 參數)
+    const scriptName = urlParams.get('p');
+    if (scriptName) {
+        // 1. 動態載入題目腳本 (例如 chi-01.js)
+        const questionScript = document.createElement('script');
+        questionScript.src = scriptName;
+
+        // 2. 監聽題目腳本的載入完成事件，確保其已載入
+        questionScript.onload = function() {
+            // 3. 題目腳本載入完成後，才動態載入 showexam2.js
+            const examScript = document.createElement('script');
+            examScript.src = 'showexam2.js';
+            document.body.appendChild(examScript);
+        };
+
+        // 4. 將題目腳本加入到 body 中，開始載入
+        document.body.appendChild(questionScript);
+    } else {
+        console.log('網址中缺少 "p" 參數，無法載入題庫腳本。');
+    }
+</script>
+
+</body>
+</html>
