@@ -1,8 +1,6 @@
 // 提取单元信息
 exam.forEach((q, index) => {
-    //const match = q.item.match(/\[(\d+-\d+)\]/);
     const match = q.item.match(/\[([^\]]+)\]/);
-
     q.unit = match ? match[1] : '';
     q.id = index + 1;
 });
@@ -23,25 +21,17 @@ function renderQuestions(page = 1) {
         const questionElement = document.createElement('div');
         questionElement.className = 'question-card';
 
-        // 提取题目内容（去掉最后的单元标记）
-        //const questionText = question.item.replace(/\[(\d+-\d+)\]$/, '');
+        const questionText = question.item.replace(/\[(\d+-\d+)\]$/, '').replace(/\(A\)/, '<br>(A)');
 
-const questionText = question.item.replace(/\[(\d+-\d+)\]$/, '').replace(/\(A\)/, '<br>(A)');      // 單獨在第一個 (A) 前加換行
-
-
-
-        // === 新增開始 ===
-        // 如果題目資料中有解析(tea)，則生成解析的 HTML 區塊
         let explanationHTML = '';
         if (question.tea && question.tea.trim() !== '') {
             explanationHTML = `
-                <div class="explanation">
+                <div class="explanation" style="display: none;">
                     <strong>解析:</strong><br>
                     ${question.tea}
                 </div>
             `;
         }
-        // === 新增結束 ===
 
         questionElement.innerHTML = `
             <div class="question-header">
@@ -49,14 +39,33 @@ const questionText = question.item.replace(/\[(\d+-\d+)\]$/, '').replace(/\(A\)/
                 <span class="question-tag">${question.unit}</span>
             </div>
             <div class="question-content">${questionText}</div>
-            <div class="answer">
+            <button class="toggle-explanation">解析</button>
+            <div class="answer" style="display: none;">
                 <strong>正确答案: ${question.ans}</strong>
             </div>
-            ${explanationHTML} 
-        `; // <-- 將生成的解析 HTML 添加到這裡
-
+            ${explanationHTML}
+        `;
         questionList.appendChild(questionElement);
     }
+    
+    // 為每個「解析」按鈕添加點擊事件監聽器
+    document.querySelectorAll('.toggle-explanation').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const card = event.target.closest('.question-card');
+            const answerDiv = card.querySelector('.answer');
+            const explanationDiv = card.querySelector('.explanation');
+
+            if (answerDiv.style.display === 'none') {
+                answerDiv.style.display = 'block';
+                explanationDiv.style.display = 'block';
+                event.target.textContent = '隱藏解析';
+            } else {
+                answerDiv.style.display = 'none';
+                explanationDiv.style.display = 'none';
+                event.target.textContent = '解析';
+            }
+        });
+    });
 
     // 渲染分页
     renderPagination(exam.length, page);
