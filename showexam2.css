@@ -11,6 +11,30 @@
 .b {
   color: #00f; /*  */
 }
+
+.toggle-explanation {
+    padding: 10px 20px;
+    background-color: #3498db; /* 深藍色背景 */
+    color: white;
+    border: none;
+    border-radius: 8px; /* 圓角 */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輕微陰影 */
+}
+
+.toggle-explanation:hover {
+    background-color: #2980b9; /* 滑鼠懸停時顏色變深 */
+    transform: translateY(-2px); /* 輕微上浮效果 */
+}
+
+.toggle-explanation:active {
+    background-color: #2c3e50; /* 點擊時的顏色 */
+    transform: translateY(0); /* 按下效果 */
+}
 .top-bar2 {
     position: fixed;
     top: 0px;
