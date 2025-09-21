@@ -29,12 +29,8 @@
     // 取得網址中的所有參數，只需執行一次
     const urlParams = new URLSearchParams(window.location.search);
 
-    // 取得標題名稱 (使用正確的 'n' 參數)
+    // 取得標題名稱 (使用 'pp' 參數)
     const titleName = urlParams.get('pp');
-
-//ti="105專二+外勤國文";
-
-
 
     if (titleName) {
         const titleElement = document.querySelector('.toptitle');
@@ -46,12 +42,25 @@
     // 取得腳本名稱 (使用 'p' 參數)
     const scriptName = urlParams.get('p');
     if (scriptName) {
-        // 1. 動態載入題目腳本 (例如 chi-01.js)
+        // 1. 動態載入題目腳本
         const questionScript = document.createElement('script');
         questionScript.src = scriptName;
 
         // 2. 監聽題目腳本的載入完成事件，確保其已載入
         questionScript.onload = function() {
+            // **這裡是修改的重點**
+            // 確保 ti 變數存在後才彈出 alert
+
+if (typeof ti !== 'undefined') {
+    const titleElement = document.querySelector('.toptitle');
+    titleElement.textContent = ti;
+} else {
+    console.log('載入的腳本中未定義 "ti" 變數。');
+}
+
+
+
+
             // 3. 題目腳本載入完成後，才動態載入 showexam2.js
             const examScript = document.createElement('script');
             examScript.src = 'showexam2.js';
@@ -63,8 +72,6 @@
     } else {
         console.log('網址中缺少 "p" 參數，無法載入題庫腳本。');
     }
-alert(ti);
-//toptitleElement.textContent = ti;
 </script>
 
 </body>
