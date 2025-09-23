@@ -21,8 +21,13 @@ function renderQuestions(page = 1) {
         const questionElement = document.createElement('div');
         questionElement.className = 'question-card';
 
-        const questionText = question.item.replace(/\[(\d+-\d+)\]$/, '').replace(/\(A\)/, '<br>(A)');
+questionText = question.item.replace(/\[(\d+-\d+)\]$/, '').replace(/\(A\)/, '<br>(A)').replace(/\(B\)/, '<br>(B)').replace(/\(C\)/, '<br>(C)').replace(/\(D\)/, '<br>(D)')
 
+
+question.tea=question.tea.replace(/\(A\)/, '<br>(A)');
+question.tea=question.tea.replace(/\(B\)/, '<br>(B)');
+question.tea=question.tea.replace(/\(C\)/, '<br>(C)');
+question.tea=question.tea.replace(/\(D\)/, '<br>(D)');
         let explanationHTML = '';
         if (question.tea && question.tea.trim() !== '') {
             explanationHTML = `
