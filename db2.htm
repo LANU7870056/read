@@ -3,6 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    /* 確保 top-bar2 是定位父元素 */
+    .top-bar2 {
+        display: flex;
+        justify-content: space-between; /* 讓內容分散 */
+        align-items: center; /* 垂直置中 */
+        /* 假設 top-bar2 有固定的高度和背景色等，這裡只加定位相關 */
+        position: relative;
+    }
+
+    /* 確保按鈕在最右邊 */
+    .toggle-all-solutions-container {
+        /* 用來包住按鈕，放在右邊的 spacer 位置 */
+        display: flex;
+        align-items: center;
+        padding-right: 15px; /* 增加一點空間 */
+    }
+
+    .toggle-all-solutions-btn {
+        background-color: #007bff; /* 藍色背景 */
+        color: white; /* 白色文字 */
+        border: none;
+        padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .toggle-all-solutions-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<p style="font-size: 16px;">
+    <i class="fa fa-arrow-right" style="font-size: 1.2em; vertical-align: middle;"></i> 這是一段中文
+</p>
+
     <title>國文题庫</title>
     <link rel="stylesheet" href="showexam2.css">
 </head>
@@ -16,6 +61,12 @@
     </div>
     <img src="mlogoexam.png" alt="網站Logo" class="logo">
     <div class="toptitle">~~</div>
+
+    <div class="toggle-all-solutions-container">
+        <button class="toggle-all-solutions-btn" id="toggleAllSolutions">
+            <i class="fas fa-eye"></i> 全部解析
+        </button>
+    </div>
 </div>
 <header></header>
 
@@ -50,21 +101,20 @@
         questionScript.onload = function() {
             // **這裡是修改的重點**
             // 確保 ti 變數存在後才彈出 alert
-
-if (typeof ti !== 'undefined') {
-    const titleElement = document.querySelector('.toptitle');
-    titleElement.textContent = ti;
-} else {
-    console.log('載入的腳本中未定義 "ti" 變數。');
-}
-
-
-
+            if (typeof ti !== 'undefined') {
+                const titleElement = document.querySelector('.toptitle');
+                titleElement.textContent = ti;
+            } else {
+                console.log('載入的腳本中未定義 "ti" 變數。');
+            }
 
             // 3. 題目腳本載入完成後，才動態載入 showexam2.js
             const examScript = document.createElement('script');
             examScript.src = 'showexam2.js';
             document.body.appendChild(examScript);
+            
+            // 確保 showexam2.js 載入完畢後，再設定按鈕事件
+            examScript.onload = setupToggleAllSolutionsButton;
         };
 
         // 4. 將題目腳本加入到 body 中，開始載入
@@ -72,6 +122,56 @@ if (typeof ti !== 'undefined') {
     } else {
         console.log('網址中缺少 "p" 參數，無法載入題庫腳本。');
     }
+
+// --- 新增的按鈕功能 ---
+
+
+function setupToggleAllSolutionsButton() {
+    const toggleButton = document.getElementById('toggleAllSolutions');
+    let solutionsVisible = false; // 追蹤目前狀態：false = 全部收合 / true = 全部展開
+
+    toggleButton.addEventListener('click', function() {
+        // 1. 找到所有個別題目的「解析」按鈕
+        // 我們使用你提供的 class 名稱：.toggle-explanation
+        const allToggleButtons = document.querySelectorAll('.toggle-explanation'); 
+        
+        if (!allToggleButtons.length) {
+            console.log('未找到任何個別解析按鈕 (.toggle-explanation)。');
+            return;
+        }
+
+        solutionsVisible = !solutionsVisible; // 切換新狀態 (收合 -> 展開 / 展開 -> 收合)
+
+        // 2. 對每一個解析按鈕執行模擬點擊
+        allToggleButtons.forEach(button => {
+            // 由於我們不知道目前解析是開是關，最保險的做法是強制點擊兩次
+            // 確保目標狀態達成，或只點擊一次讓它切換。
+            
+            // 這裡假設點擊一次就能切換狀態
+            // 如果解析目前是關閉的 (solutionsVisible=true)，就點擊它打開
+            // 如果解析目前是開啟的 (solutionsVisible=false)，就點擊它關閉
+            
+            // 更精確的做法：只有在當前狀態與目標狀態不符時才點擊。
+            // 但因為我們不知道解析區塊的狀態 Class，所以暫時用簡單的邏輯：
+            
+            // **直接模擬點擊，讓解析區塊切換狀態**
+            // 由於我們在 solutionsVisible = !solutionsVisible; 已經切換了狀態，
+            // 這裡的點擊操作會將所有解析切換到新狀態。
+            
+            button.click(); // **核心動作：模擬點擊按鈕**
+            
+            // 注意：如果你發現按一下會讓解析開，再按一下會讓解析關，
+            // 則這個簡單的 button.click() 就能實現全部展開/收合的功能。
+        });
+
+        // 3. 更新按鈕文字和圖標
+        if (solutionsVisible) {
+            this.innerHTML = '<i class="fas fa-eye-slash"></i> 隱藏解析';
+        } else {
+            this.innerHTML = '<i class="fas fa-eye"></i> 全部解析';
+        }
+    });
+}
 </script>
 
 </body>
